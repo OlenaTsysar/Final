@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+.servise_list {
+    width: 100%;
+    color: #180cc4;
+    
+}
+.categ_item {
+    margin: 5px;    
+    font-weight: bold;
+    font-size: 26px;
+    padding: 15px;
+    list-style: none;
+    border: 2px solid #180cc4;
+    border-radius: 20px;
+    background-color: #0aebeb;
+}
+
+.serv_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    width: 100%;
+    padding: 10px;
+
+    font-size: 20px;
+}

@@ -1,0 +1,17 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+
+{% block main_content %}
+
+<div class="Block_List">
+<ul class="Doctors_List">
+{% for item in doctor_list %}
+    <li class="List_item">{{item}}</li>
+{% endfor %}
+</ul>
+</div>
+
+{% endblock main_content %}
+

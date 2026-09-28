@@ -1,0 +1,39 @@
+{% load static %}
+
+<nav class="nav_menu">
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+       
+    
+    <ul class="nav_list">
+        <li class="list_item">
+            <div class=ikonka>
+            <a href="{% url 'home_page' %}">
+                <img src="{% static 'stomat/image/tooth.png' %}" alt="">
+                <span>StomatMed</span>
+            </a>
+            </div>
+        </li>
+        <li class="list_item1">
+            <a class="listbut" href="{% url 'home_page' %}">Home</a>
+        </li>
+        <li class="list_item2">
+            <a class="listbut" href="{% url 'servise_page' %}">Servise</a>
+        </li>
+        <li class="list_item3">
+            <a class="listbut" href="{% url 'our_jobs_page' %}">Our Jobs</a>
+        </li>
+        <li class="list_item4">
+            <a class="listbut" href="{% url 'price_page' %}">Price</a>
+        </li>
+        <li class="list_item5">
+            <a class="listbut" href="{% url 'doctors_page' %}">Our doctors</a>
+        </li>
+        <li class="list_item6">
+            <a class="listbut" href="{% url 'contacts_page' %}">Our contacts</a>
+        </li>
+    </ul>
+</nav>

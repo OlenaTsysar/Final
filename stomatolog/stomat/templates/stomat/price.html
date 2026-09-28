@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+{% include "includes/header.html" %}
+
+{% block main_content %}
+    <ul class="price_list">
+        {% for categ in category %}
+            <li class="categ_item">
+            <p>{{categ.name}}</p>
+            </li>
+
+            {% for price in categ.price.all %}
+                <li class="price_item">
+                <p>{{price.name}}</p>
+                <span></span>
+                <span>{{price.price}}</span>
+                </li>
+        
+            {% endfor %}
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock main_content %}

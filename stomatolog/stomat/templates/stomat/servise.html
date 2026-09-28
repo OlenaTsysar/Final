@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+{% include "includes/header.html" %}
+
+{% block main_content %}
+    <ul class="servise_list">
+        {% for categ in category %}
+            <li class="categ_item">
+            <p>{{categ.name}}</p>
+            </li>
+
+            {% for serv in categ.service.all %}
+                <li class="serv_item">
+                <p>{{serv.name}}</p>
+                </li>
+            {% endfor %}
+
+        {% endfor %}
+
+    </ul>
+
+
+{% endblock main_content %}
+
+
+{% comment %} 
+
+    <ul class="Products_list">
+        {% for prod in products %}
+            <li class="products_item">
+
+                {% if prod.image %}
+                    <img src="{{ prod.image.url }}" alt="">
+                
+                {% else %}
+                    <p>No picture</p>
+                {% endif %}
+
+                <h1>{{prod.name}}</h1>
+                <p>{{prod.description|title}}</p>
+                <span>{{prod.price}} Kc</span>
+                <span>{{prod.quantity}} shtuk</span>
+                <a href="{% url 'product_detail' id=prod.id %}">Podrobnee</a>
+                <form action="{% url 'cart_product' id=prod.id%}" method="post">
+                  {% csrf_token %}
+                  <button type="submit">Add to cart</button>
+
+                  {% if messages %}
+                    {% for message in messages %}
+                      <span class="{{message.tags}}">{{message}}</span>
+                    {% endfor %}
+                  {% else %}
+                  {% endif %}
+                </form>
+
+                {% if user.is_superuser %}
+                  <a href="{% url 'update_product' id=prod.id %}">Update product</a>
+                  <form action="{% url 'product_delete' id=prod.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">DELETE</button>
+                                 
+                  </form>
+                {% else %}
+                {% endif %}
+
+
+
+            
+            </li>
+        {% endfor %}
+        
+    <ul>
+    {% if is_paginated %}
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+      <a href="?page=1">Первая</a>
+      <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+    {% endif %}
+
+     {% for page_num in paginator.page_range %}
+      {% if page_num == page_obj.number %}
+        <strong>{{ page_num }}</strong>
+      {% else %}
+        <a href="?page={{ page_num }}">{{ page_num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">Вперёд</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
+    {% endif %}
+  </div>
+{% endif %}
+   {% comment %} <p>{{products|join: ", "}}</p> ??? {% endcomment %}
+
+ 

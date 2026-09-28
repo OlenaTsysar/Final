@@ -1,0 +1,28 @@
+from django.contrib import admin
+from .models import service, Category, doctors, DoctorCategory, Price
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('id', 'category', 'name', 'description')
+    search_fields = ('name',)
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    search_fields = ('name',)
+
+class DoctorCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+class DoctorsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'qualification', 'experience', 'category', 'photo', 'description')
+    search_fields = ('name',)
+
+class PriceAdmin(admin.ModelAdmin):
+    list_display = ('id', 'category', 'name', 'price')
+    search_fields = ('name',)
+
+# Register your models here.
+admin.site.register(service, ServiceAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(doctors, DoctorsAdmin)
+admin.site.register(DoctorCategory, DoctorCategoryAdmin)
+admin.site.register(Price, PriceAdmin)
