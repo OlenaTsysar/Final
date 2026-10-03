@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main_content %}
+<div class="container">
+    <div class=ikonkaNavC>
+        <a class="aNav" href="{% url 'home_page' %}">
+            <img class="imgIkonka" src="{% static 'stomat/image/tooth.png' %}" alt="">
+           <span class="spanIkonka">S</span>
+            <span class="spanIkonka">t</span>
+            <span class="spanIkonka">o</span>
+            <span class="spanIkonka">m</span>
+            <span class="spanIkonka">a</span>
+            <span class="spanIkonka">t</span>
+            <span class="spanIkonka">M</span>
+            <span class="spanIkonka">e</span>
+            <span class="spanIkonka">d</span>
+        </a>
+    </div>
+
+    <div class="telefon">
+        <span class="ikonka"><img src="{% static 'stomat/image/free-icon-phone-call-126509.png' %}" alt=""></span>
+        <span class="textIkonka">+420 212 323 454</span>
+
+    </div>
+    <div class="email">
+        <span class="ikonka"><img src="{% static 'stomat/image/free-icon-envelope-126516.png' %}" alt=""></span>
+        <span class="textIkonka">stomatMed@sss.cz</span>
+    </div>
+    <a href="https://www.flaticon.com/ru/free-icons/" title="вызов иконки">Вызов иконки от Gregor Cresnar - Flaticon</a>
+</div>
+{% endblock main_content %}
+

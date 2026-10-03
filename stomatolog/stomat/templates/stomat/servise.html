@@ -5,22 +5,27 @@
 {% include "includes/header.html" %}
 
 {% block main_content %}
+<div class="servise_container">
     <ul class="servise_list">
         {% for categ in category %}
-            <li class="categ_item">
-            <p>{{categ.name}}</p>
+            <li class="category">
+                <div class="categ_item">
+                    <p>{{categ.name}}</p>
+                </div>
+
+                <ul class="servise_list">
+                    {% for serv in categ.service.all %}
+                        <li class="serv_item">
+                            <p>{{serv.description}}</p>
+                        </li>
+            
+                    {% endfor %}
+                </ul>
             </li>
-
-            {% for serv in categ.service.all %}
-                <li class="serv_item">
-                <p>{{serv.name}}</p>
-                </li>
-            {% endfor %}
-
         {% endfor %}
 
     </ul>
-
+</div>
 
 {% endblock main_content %}
 

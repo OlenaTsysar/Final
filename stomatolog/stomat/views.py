@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import service, Category, Price
+from .models import service, Category, Price, DoctorsQualification
+from .form import ContactForm
 
 # Create your views here.
 def Home(request):
@@ -25,8 +26,18 @@ def Servise(request):
     }
     return render(request, 'stomat/servise.html', context)
 
-def Contacts(request):
-    return HttpResponse('contacts')
+def Order(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            return HttpResponse(f"Спасибо, {name}! Мы свяжемся с вами по адресу {email}.")
+    else:
+        form = ContactForm()
+
+    return render(request, "contacts.html", {"form": form})
+
 
 def Price_page(request):
     category_list = Category.objects.all()
@@ -39,3 +50,6 @@ def Price_page(request):
 
 def OurJobs(request):
     return HttpResponse('our_jobs')
+
+def Contacts(request):
+    return render(request, 'stomat/contacts.html')

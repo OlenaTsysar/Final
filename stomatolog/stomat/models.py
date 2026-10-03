@@ -4,6 +4,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=250)
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -17,11 +18,11 @@ class DoctorCategory(models.Model):
 class doctors(models.Model):
 
     name = models.CharField(max_length=60)
-    qualification = models.ImageField(upload_to='stomat/image', null=True, blank=True)
+    # qualification = models.ForeignKey(DoctorsQualification, on_delete=models.CASCADE, related_name="doctors", null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     experience = models.CharField(max_length=100)
     category = models.ForeignKey(DoctorCategory, on_delete=models.PROTECT, related_name="doctors", null=True, blank=True)
-    photo = models.ImageField(upload_to='stomat/image/', null=True, blank=True)
+    photo = models.ImageField(upload_to='stomat/image', null=True, blank=True)
 
     class Meta:
         ordering = ['name']
@@ -35,9 +36,13 @@ class doctors(models.Model):
         self.name = self.name.capitalize().strip(' ')
         super().save(*args, **kwargs)
 
+class DoctorsQualification(models.Model):
+    name = models.ForeignKey(doctors, on_delete=models.CASCADE, related_name="doctorsQualification", null=True, blank=True)
+    image = models.ImageField(upload_to='stomat/image/', null=True, blank=True)
+
 class service(models.Model):
     name = models.CharField(max_length=250)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    # price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE , related_name="service")
 

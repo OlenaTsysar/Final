@@ -60,11 +60,13 @@ background-image: linear-gradient(to right, #0aebeb, white);
     width: clamp(30px, 5vw, 50px);
     height: auto;
     object-fit: contain;
-    color: #180cc4;
+    
    }
-
+.spanIkonka {
+  color: #180cc4;
+}
 .listbut {
-  padding: 10px;
+  padding: 7px;
   background-color: white;
   border: 5px solid rgb(8, 55, 207);
   border-radius: 20px;

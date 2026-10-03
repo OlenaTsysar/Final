@@ -11,10 +11,10 @@
     <ul class="nav_list">
         <li class="list_item">
             <div class=ikonka>
-            <a href="{% url 'home_page' %}">
-                <img src="{% static 'stomat/image/tooth.png' %}" alt="">
-                <span>StomatMed</span>
-            </a>
+                <a href="{% url 'home_page' %}">
+                    <img src="{% static 'stomat/image/tooth.png' %}" alt="">
+                    <span class="spanIkonka">StomatMed</span>
+                </a>
             </div>
         </li>
         <li class="list_item1">
@@ -33,6 +33,9 @@
             <a class="listbut" href="{% url 'doctors_page' %}">Our doctors</a>
         </li>
         <li class="list_item6">
+            <a class="listbut" href="{% url 'order_page' %}">Order</a>
+        </li>
+        <li class="list_item7">
             <a class="listbut" href="{% url 'contacts_page' %}">Our contacts</a>
         </li>
     </ul>
