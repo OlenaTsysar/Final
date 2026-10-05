@@ -1,0 +1,48 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+
+{% block main_content %}
+
+<div class="Block_List">
+    <ul class="category_doc_list">
+        {% if doc %}
+            <li class="doc_item">
+                <h1>{{ doc.name }}</h1>
+                {% if doc.photo %}
+                    <img src="{{ doc.photo.url }}" alt="{{ doc.name }}">
+                {% else %}
+                    <p>No photo</p>
+                {% endif %}
+                
+                <p>Стаж: {{ doc.experience }}</p>
+                <p>Описание: {{ doc.description }}</p>
+                <h2>Квалификация</h2>
+
+                {% for qualification in doc.doctorsQualification.all %}
+                    <div class="qualification">
+                    {% if qualification.image %}
+                        <img src="{{ qualification.image.url }}" alt="">
+                    {% endif %}
+
+                    </div>
+                    {% empty %}
+                        <p>Квалификация не указана.</p>
+                {% endfor %}
+
+
+                
+                <a href="{% url 'doctors_page' %}">Nazad</a>
+                </li>
+        {% else %}
+            <p>No such doctor</p>
+        {% endif %}
+        
+    </ul>
+</div>
+
+{% endblock main_content %}
+
+
+

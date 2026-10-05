@@ -50,6 +50,7 @@ img {
 .spanIkonka {
     /* display: inline-block; */
     /* transform: translateX(-60%); */
+    color: blue;
     position: relative;
     animation: center 2s ease-in-out forwards;
 }

@@ -19,7 +19,7 @@ class doctors(models.Model):
 
     name = models.CharField(max_length=60)
     # qualification = models.ForeignKey(DoctorsQualification, on_delete=models.CASCADE, related_name="doctors", null=True, blank=True)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(default=" ")
     experience = models.CharField(max_length=100)
     category = models.ForeignKey(DoctorCategory, on_delete=models.PROTECT, related_name="doctors", null=True, blank=True)
     photo = models.ImageField(upload_to='stomat/image', null=True, blank=True)
@@ -72,8 +72,15 @@ class Price(models.Model):
     def __str__(self):
         return self.name
 
+class order(models.Model):
+    name = models.CharField()
+    email = models.EmailField()
+    telefon = models.PositiveIntegerField()
+    data = models.DateField()
+    data_is_stock = models.BooleanField(default=False)
+    time = models.TimeField()
+    time_is_stock = models.BooleanField(default=False)
 
-# class order(models.Model):
 
 
 

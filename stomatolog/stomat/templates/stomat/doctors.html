@@ -6,11 +6,29 @@
 {% block main_content %}
 
 <div class="Block_List">
-<ul class="Doctors_List">
-{% for item in doctor_list %}
-    <li class="List_item">{{item}}</li>
-{% endfor %}
-</ul>
+    <ul class="category_doc_list">
+        {% for categ in category %}
+            <li class = "categ_doc_item">
+            <p>{{categ.name}}</p>
+            </li>
+
+            {% for doc in categ.doctors.all %}
+                <li class="doc_item">
+                <p>{{doc.name}}</p>
+                <p>{{doc.id}}</p>
+                {% if doc.photo %}
+                    <img src="{{ doc.photo.url }}" alt="{{ doc.name }}">
+                {% else %}
+                    <p>No photo</p>
+                {% endif %}
+                
+                <a href="{% url 'doctor_name_page' id=doc.id %}">Podrobnee</a>
+                </li>
+            {% endfor %}
+        
+        {% endfor %}
+
+    </ul>
 </div>
 
 {% endblock main_content %}

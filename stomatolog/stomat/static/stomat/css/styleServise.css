@@ -23,7 +23,7 @@
 .servise_list {
     display: flex;
     flex-direction: column;
-
+    
     width: 80%;
 
     color: #180cc4;
@@ -56,6 +56,7 @@
     font-size: 20px;
     border: 2px solid #180cc4;
     border-radius: 20px;
+    box-shadow: 15px 15px 15px #03fdfd;
 
     top: 20px;
     right: 20px;
@@ -67,7 +68,7 @@
 
 }
 .category:hover .serv_item {
-    background-color: white;
+    background-color: rgb(10, 235, 235, 0.5);
     opacity: 1;
     visibility: visible;
 }
