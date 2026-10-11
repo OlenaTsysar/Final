@@ -1,0 +1,42 @@
+.order_container {
+    display: flex;
+    margin: 10vh auto;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+    width: 60%;
+    height: 60vh;
+
+    border: 5px solid blue;
+    border-radius: 20px;
+    & p {
+        color: blue;
+        font-size: 20px;
+        height: 5vh;
+
+        & input, & select {
+
+            height: 5vh;
+            border-radius: 10px;
+            border: 3px solid blue;
+
+        }
+
+    }
+
+    & button {
+        display: flex;
+        margin: 0 auto;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 10vw;
+        height: 5vh;
+
+        border-radius: 10px;
+        border: 3px solid blue;
+        color: blue;
+        font-size: 15px;
+    }
+
+}

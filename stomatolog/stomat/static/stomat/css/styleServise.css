@@ -48,9 +48,13 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    flex-wrap: nowrap; 
+    flex-wrap: wrap; 
     position: absolute;
     width: 50%;
+    max-height: 130%;
+    overflow: auto;
+    box-sizing: border-box;
+
     padding: 10px;
 
     font-size: 20px;
@@ -67,6 +71,15 @@
         visibility 0.5s ease-in-out;
 
 }
+
+.serv_item::-webkit-scrollbar-track {
+        background: #0aebeb;
+    }
+
+.serv_item::-webkit-scrollbar-thumb {
+        background: #180cc4;
+        border-radius: 12px;
+    }
 .category:hover .serv_item {
     background-color: rgb(10, 235, 235, 0.5);
     opacity: 1;

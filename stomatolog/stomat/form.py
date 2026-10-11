@@ -1,8 +1,8 @@
 from django import forms
-from .models import DoctorCategory, doctors
+from .models import DoctorCategory, doctors,Date
 from django.core.exceptions import ValidationError
 
-class ContactForm(forms.Form):
+class OrderForm(forms.Form):
     name = forms.CharField(
         label="Ваше имя",
         max_length=50,
@@ -19,8 +19,21 @@ class ContactForm(forms.Form):
         })
     )
 
+    telefon = forms.CharField(
+        label="Телефон",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': '+420...'
+        })
+    )
 
-    class DoctorCategoryForm(forms.Form):
+class DateForm(forms.Form):
+    date = forms.ModelChoiceField(
+        queryset=Date.objects.filter(is_buzy=False),
+        empty_label="Выберите время"
+    )
+
+class DoctorCategoryForm(forms.Form):
         class Meta:
             model = DoctorCategory
             fields = "__all__"

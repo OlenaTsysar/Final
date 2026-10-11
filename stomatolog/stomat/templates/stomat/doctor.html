@@ -11,26 +11,28 @@
             <li class="doc_item">
                 <h1>{{ doc.name }}</h1>
                 {% if doc.photo %}
-                    <img src="{{ doc.photo.url }}" alt="{{ doc.name }}">
+                    <div class="div_doc_photo">
+                        <img class="doc_photo" src="{{ doc.photo.url }}" alt="{{ doc.name }}">
+                    </div>
                 {% else %}
                     <p>No photo</p>
                 {% endif %}
                 
-                <p>Стаж: {{ doc.experience }}</p>
-                <p>Описание: {{ doc.description }}</p>
+                <p><strong>Стаж:</strong> {{ doc.experience }}</p>
+                <p><strong>Описание:</strong> {{ doc.description }}</p>
                 <h2>Квалификация</h2>
+                <div class="qualification">
+                    {% for qualification in doc.doctorsQualification.all %}
+                    
+                        {% if qualification.image %}
+                            <img src="{{ qualification.image.url }}" alt="">
+                        {% endif %}
 
-                {% for qualification in doc.doctorsQualification.all %}
-                    <div class="qualification">
-                    {% if qualification.image %}
-                        <img src="{{ qualification.image.url }}" alt="">
-                    {% endif %}
-
-                    </div>
-                    {% empty %}
-                        <p>Квалификация не указана.</p>
-                {% endfor %}
-
+                
+                        {% empty %}
+                            <p><strong>Квалификация не указана.</strong></p>
+                    {% endfor %}
+                </div>
 
                 
                 <a href="{% url 'doctors_page' %}">Nazad</a>

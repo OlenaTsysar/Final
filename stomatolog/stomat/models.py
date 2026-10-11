@@ -72,14 +72,14 @@ class Price(models.Model):
     def __str__(self):
         return self.name
 
-class order(models.Model):
-    name = models.CharField()
-    email = models.EmailField()
-    telefon = models.PositiveIntegerField()
-    data = models.DateField()
-    data_is_stock = models.BooleanField(default=False)
-    time = models.TimeField()
-    time_is_stock = models.BooleanField(default=False)
+class Date(models.Model):
+    date = models.DateTimeField()
+    is_buzy = models.BooleanField(default = False)
+
+    def __str__(self):
+        return str(self.date)
+
+
 
 
 

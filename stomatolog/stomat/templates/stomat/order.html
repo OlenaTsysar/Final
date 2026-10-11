@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% include "includes/header.html" %}
+
+{% block main_content %}
+<form class="order_container" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    {{date_form.as_p}}
+    <button type="submit">Create order</button>
+
+</form>
+
+
+{% endblock main_content %}

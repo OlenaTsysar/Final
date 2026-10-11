@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import service, Category, Price, DoctorsQualification, doctors, DoctorCategory
-from .form import ContactForm, DoctorCreateForm
+from .models import service, Category, Price, DoctorsQualification, doctors, DoctorCategory, Date
+from .form import OrderForm, DoctorCreateForm, DateForm
 
 # Create your views here.
 def Home(request):
@@ -36,19 +36,55 @@ def Servise(request):
     return render(request, 'stomat/servise.html', context)
 
 def Order(request):
-    return HttpResponse('order')
+    if request.method == "GET":
+        form = OrderForm()
+        date_form = DateForm()
+        return render(request, "stomat/order.html", {"form": form, "date_form": date_form})
 
+    if request.method == "POST":
+       
+        form = OrderForm(request.POST)
+        date_form = DateForm(request.POST)
 
-    # if request.method == "POST":
-    #     form = ContactForm(request.POST)
-    #     if form.is_valid():
-    #         name = form.cleaned_data["name"]
-    #         email = form.cleaned_data["email"]
-    #         return HttpResponse(f"Спасибо, {name}! Мы свяжемся с вами по адресу {email}.")
-    # else:
-    #     form = ContactForm()
+        if form.is_valid() and date_form.is_valid():
+            
+            rezerv = date_form.cleaned_data['date']
+            rezerv.is_buzy = True
+            rezerv.save()     
+            
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            telefon = form.cleaned_data["telefon"]
+  
+            
+            form = OrderForm()
+            date_form = DateForm()
+            # return render(request, "stomat/order.html", {"form": form})
+    else:
+        form = OrderForm()
+        date_form = DateForm()
 
-    # return render(request, "contacts.html", {"form": form})
+    return render(request, "stomat/order.html", {"form": form,
+                                                 "date_form": date_form})
+
+    # return HttpResponse('order')
+
+# def Date_oder (request):
+
+#     if request.method == "POST":
+#         date_form = DateForm(request.POST)
+
+#         print(date_form.fields["date"].queryset)
+#         if date_form.is_valid():
+#             rezerv = date_form.cleaned_data['date']
+#             rezerv.is_buzy = True
+#             rezerv.save()           
+#             date_form = DateForm()
+
+#     else:
+#         date_form = DateForm()
+
+#     return render(request, "stomat/order.html", {"date_form": date_form})
 
 
 def Price_page(request):

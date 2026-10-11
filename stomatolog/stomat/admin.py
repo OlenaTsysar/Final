@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import service, Category, doctors, DoctorCategory, Price,DoctorsQualification, order
+from .models import service, Category, doctors, DoctorCategory, Price,DoctorsQualification, Date
+
 
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('id', 'category', 'name', 'description')
@@ -24,8 +25,10 @@ class PriceAdmin(admin.ModelAdmin):
     list_display = ('id', 'category', 'name', 'price')
     search_fields = ('name',)
 
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'data', 'data_is_stock', 'time', 'time_is_stock')
+class DateAdmin(admin.ModelAdmin):
+    list_display = ('date', 'is_buzy')
+
+
 
 # Register your models here.
 admin.site.register(service, ServiceAdmin)
@@ -34,4 +37,5 @@ admin.site.register(doctors, DoctorsAdmin)
 admin.site.register(DoctorCategory, DoctorCategoryAdmin)
 admin.site.register(Price, PriceAdmin)
 admin.site.register(DoctorsQualification, DoctorsQualificationAdmin)
-admin.site.register(order, OrderAdmin)
+admin.site.register(Date, DateAdmin)
+
