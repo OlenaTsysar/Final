@@ -36,6 +36,8 @@
 
                 
                 <a href="{% url 'doctors_page' %}">Nazad</a>
+                <a href="{% url 'update_doctor' id=doc.id %}">Update</a>
+                <a href="{% url 'delete_doctor' id=doc.id %}">Delete</a>
                 </li>
         {% else %}
             <p>No such doctor</p>

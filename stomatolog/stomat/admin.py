@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import service, Category, doctors, DoctorCategory, Price,DoctorsQualification, Date
+from .models import service, Category, doctors, DoctorCategory, Price,DoctorsQualification, Date, ourJobs
 
 
 class ServiceAdmin(admin.ModelAdmin):
@@ -28,6 +28,9 @@ class PriceAdmin(admin.ModelAdmin):
 class DateAdmin(admin.ModelAdmin):
     list_display = ('date', 'is_buzy')
 
+class OurJobsAdmin(admin.ModelAdmin):
+    list_display = ('image', 'description')
+
 
 
 # Register your models here.
@@ -38,4 +41,4 @@ admin.site.register(DoctorCategory, DoctorCategoryAdmin)
 admin.site.register(Price, PriceAdmin)
 admin.site.register(DoctorsQualification, DoctorsQualificationAdmin)
 admin.site.register(Date, DateAdmin)
-
+admin.site.register(ourJobs, OurJobsAdmin)

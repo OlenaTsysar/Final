@@ -1,5 +1,5 @@
 from django import forms
-from .models import DoctorCategory, doctors,Date
+from .models import DoctorCategory, doctors, DoctorsQualification, Date
 from django.core.exceptions import ValidationError
 
 class OrderForm(forms.Form):
@@ -45,6 +45,11 @@ class DoctorCategoryForm(forms.Form):
             return name
 
 class DoctorCreateForm(forms.ModelForm):
+    class Meta:
+        model = doctors
+        fields = "__all__"
+
+class DoctorUpdateForm(forms.ModelForm):
     class Meta:
         model = doctors
         fields = "__all__"

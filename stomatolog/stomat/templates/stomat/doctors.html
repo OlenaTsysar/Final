@@ -9,8 +9,9 @@
     <ul class="category_all_doc_list">
         {% for categ in category %}
             <li class = "categ_all_doc_item">
-            <p>{{categ.name}}</p>
+                <p>{{categ.name}}</p>
             </li>
+                            <a href="{% url 'create_doctor' %}">Create</a>
 
             {% for doc in categ.doctors.all %}
                 <li class="all_doc_item">
@@ -23,6 +24,7 @@
                 {% endif %}
                 
                 <a href="{% url 'doctor_name_page' id=doc.id %}">Podrobnee</a>
+
 
                 
                 </li>

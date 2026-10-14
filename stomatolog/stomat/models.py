@@ -33,7 +33,7 @@ class doctors(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.name = self.name.capitalize().strip(' ')
+        self.name = self.name.title().strip(' ')
         super().save(*args, **kwargs)
 
 class DoctorsQualification(models.Model):
@@ -56,7 +56,8 @@ class service(models.Model):
 
 
 class ourJobs(models.Model):
-    image = models.ImageField()
+    image = models.ImageField(null=True, blank=True)
+
     description = models.TextField()
 
 class Price(models.Model):

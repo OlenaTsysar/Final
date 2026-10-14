@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import service, Category, Price, DoctorsQualification, doctors, DoctorCategory, Date
-from .form import OrderForm, DoctorCreateForm, DateForm
+from .models import service, Category, Price, DoctorsQualification, doctors, DoctorCategory, Date, ourJobs
+from .form import OrderForm, DoctorCreateForm, DateForm, DoctorUpdateForm
+from django.views.generic import ListView
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+
+
 
 # Create your views here.
 def Home(request):
@@ -96,8 +102,8 @@ def Price_page(request):
     }
     return render(request, 'stomat/price.html', context)
 
-def OurJobs(request):
-    return HttpResponse('our_jobs')
+# def OurJobs(request):
+#     return HttpResponse('our_jobs')
 
 def Contacts(request):
     return render(request, 'stomat/contacts.html')
@@ -113,3 +119,23 @@ def Create_doctor(request):
             form.save()
             form = DoctorCreateForm()
         return render(request, "stomat/create_doctor.html", {"form": form})
+
+class OurJobsListView(ListView):
+    model = ourJobs;
+    template_name = 'stomat/our_jobs.html'
+    context_object_name = "jobs"
+    paginate_by = 1
+
+class DoctorsUpdateView(UpdateView):
+    model = doctors
+    form_class = DoctorUpdateForm
+    template_name = "stomat/update_doctor.html"
+    success_url = reverse_lazy ("doctors_page")
+    pk_url_kwarg = 'id'
+
+
+class DoctorDeleteView(DeleteView):
+    model = doctors
+    template_name = "stomat/doctor_confirm_delete.html"
+    success_url = reverse_lazy("doctors_page")
+    pk_url_kwarg = 'id'
