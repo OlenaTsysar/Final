@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'stomat/css/styleDoctor.css' %}">
     <link rel="stylesheet" href="{% static 'stomat/css/styleAllDoctors.css' %}">
     <link rel="stylesheet" href="{% static 'stomat/css/styleContact.css' %}">
+    <link rel="stylesheet" href="{% static 'stomat/css/footer.css' %}">
 </head>
 <body>
     <header>
@@ -26,8 +27,20 @@
 </main>
 
 <footer>
-
+{% include "includes/footer.html" %}
 </footer>
-
+<script> 
+    document.getElementById('map-link').addEventListener('click', function(event) 
+        { event.preventDefault(); 
+        
+        const map = document.getElementById('map'); 
+        
+        if (map.style.display === 'none') { 
+            map.style.display = 'block'; 
+            } else { 
+                map.style.display = 'none'; 
+            } 
+    }); 
+</script>
 </body>
 </html>
