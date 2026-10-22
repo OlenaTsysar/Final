@@ -13,25 +13,50 @@
             </li>
                             <a href="{% url 'create_doctor' %}">Create</a>
 
-            {% for doc in categ.doctors.all %}
-                <li class="all_doc_item">
-                <p>{{doc.name}}</p>
-                {% comment %} <p>{{doc.id}}</p> {% endcomment %}
-                {% if doc.photo %}
-                    <img src="{{ doc.photo.url }}" alt="{{ doc.name }}">
-                {% else %}
-                    <p>No photo</p>
-                {% endif %}
+            <div class="doc_category_list">
+                {% for doc in categ.page_obj %}
+                    <li class="all_doc_item">
+                    <p>{{doc.name}}</p>
+                    {% comment %} <p>{{doc.id}}</p> {% endcomment %}
+                    {% if doc.photo %}
+                        <img src="{{ doc.photo.url }}" alt="{{ doc.name }}">
+                    {% else %}
+                        <p>No photo</p>
+                    {% endif %}
                 
-                <a href="{% url 'doctor_name_page' id=doc.id %}">Podrobnee</a>
-
+                    <a href="{% url 'doctor_name_page' id=doc.id %}">Podrobnee</a>
+                
+                    </li>
+                    {% empty %}
+                        <p><strong>vracha net</strong></p>
+                {% endfor %}
 
                 
-                </li>
-                {% empty %}
-                    <p><strong>vracha net</strong></p>
-            {% endfor %}
-        
+
+            </div>
+            
+            {% if categ.page_obj.paginator.num_pages > 1 %}
+                <div class="pagination">
+                    {% if categ.page_obj.has_previous %}
+                        <a href="?page_{{ categ.id }}=1">Первая</a>
+                        <a href="?page_{{ categ.id }}={{ categ.page_obj.previous_page_number }}"><</a>
+                    {% endif %}
+
+                    {% for page_num in categ.page_obj.paginator.page_range %}
+                        {% if page_num == categ.page_obj.number %}
+                            <strong>{{ page_num }}</strong>
+                        {% else %}
+                            <a href="?page_{{categ.id}}={{ page_num }}">{{ page_num }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if categ.page_obj.has_next %}
+                        <a href="?page_{{categ.id}}={{ categ.page_obj.next_page_number }}">></a>
+                        <a href="?page_{{categ.id}}={{ categ.page_obj.paginator.num_pages }}">Последняя</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+
         {% endfor %}
 
     </ul>

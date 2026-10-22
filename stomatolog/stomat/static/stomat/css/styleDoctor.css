@@ -87,7 +87,7 @@
 .qualification img {
         width: 20vw;
         height: 20vh;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 5px;
         border: 1px solid #180cc4;
         transition: transform 0.5s ease;
@@ -97,5 +97,6 @@
 .qualification img:hover {
         transform: scale(2);
         background-color: rgb(10, 235, 235, 0.2);
+        backdrop-filter: blur(40px);
 
     }

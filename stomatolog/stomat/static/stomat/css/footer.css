@@ -27,6 +27,11 @@
 background-image: linear-gradient(to right, #0aebeb, white);
 }
 
+.map_list {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+}
 .navigation {
     position: relative;
     display: flex;
@@ -37,8 +42,9 @@ background-image: linear-gradient(to right, #0aebeb, white);
     text-decoration: none;
 }
 #map {
-    position: absolut;
-    bottom: 20%;
+    position: absolute;
+    bottom: 100%;
+    left: -150%;
     width: 100%;
     max-width: 600px;
     animation: showMap 0.5s ease;
@@ -46,8 +52,8 @@ background-image: linear-gradient(to right, #0aebeb, white);
 }
  #map iframe {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 350px;
+    height: 350px;
     border: none;
     border-radius: 12px;
 
@@ -56,11 +62,11 @@ background-image: linear-gradient(to right, #0aebeb, white);
  @keyframes showMap {
     from {
         opacity: 0;
-        transform: translateY(-100%);
+        /* transform: translateY(-100%); */
     }
     to {
         opacity: 1;
-        transform: translateY(0)
+        /* transform: translateY(0) */
     }
  }
 

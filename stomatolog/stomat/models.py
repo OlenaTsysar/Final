@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -75,10 +76,30 @@ class Price(models.Model):
 
 class Date(models.Model):
     date = models.DateTimeField()
+
     is_buzy = models.BooleanField(default = False)
 
     def __str__(self):
         return str(self.date)
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(doctors, on_delete=models.CASCADE, related_name="orders")
+    date = models.DateField(verbose_name="Дата записи")
+    time = models.TimeField(verbose_name="Время записи")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.username} - {self.doctor.name} ({self.date} {self.time})'
+
+    class Meta:
+        ordering = ["doctor", "date", "time"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["doctor", "date", "time"],
+                name="unique_doctor_date_time")
+            ]
+
 
 
 

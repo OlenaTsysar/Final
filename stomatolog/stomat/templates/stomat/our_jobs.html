@@ -5,9 +5,9 @@
 {% block main_content %}
 
 {% for job in jobs %}
-    <li>
-        <img src="{{ job.image.url }}" alt="{{ job.description }}">
-        {{ job.description }}
+    <li class="job_list">
+        <img class="job_img" src="{{ job.image.url }}" alt="{{ job.description }}">
+        <p class="job_p">{{ job.description }}</p>
     </li>
 
 {% endfor %}
@@ -16,7 +16,7 @@
   <div class="pagination">
     {% if page_obj.has_previous %}
       <a href="?page=1">Первая</a>
-      <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+      <a href="?page={{ page_obj.previous_page_number }}"><</a>
     {% endif %}
 
      {% for page_num in paginator.page_range %}
@@ -28,7 +28,7 @@
     {% endfor %}
 
     {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">Вперёд</a>
+      <a href="?page={{ page_obj.next_page_number }}">></a>
       <a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
     {% endif %}
   </div>

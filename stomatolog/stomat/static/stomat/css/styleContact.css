@@ -5,7 +5,7 @@
 }
 
 .container {
-    margin: 15vh auto;
+    margin: 10vh auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;

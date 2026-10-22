@@ -14,11 +14,14 @@
     <link rel="stylesheet" href="{% static 'stomat/css/styleAllDoctors.css' %}">
     <link rel="stylesheet" href="{% static 'stomat/css/styleContact.css' %}">
     <link rel="stylesheet" href="{% static 'stomat/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'stomat/css/styleOurJobs.css' %}">
+    <link rel="stylesheet" href="{% static 'stomat/css/styleUserOrders.css' %}">
+    <link rel="stylesheet" href="{% static 'stomat/css/styleHome.css' %}">
 </head>
 <body>
-    <header>
+<header>
     {% include "includes/header.html" %}
-    </header>
+</header>
 <main>
     {% block main_content %}
     
@@ -42,5 +45,9 @@
             } 
     }); 
 </script>
+<script>
+    const freeTimesUrl = "{% url 'free_times_ajax' %}";
+</script>
+<script src="{% static 'stomat/js/jsOrder.js' %}"></script>
 </body>
 </html>

@@ -41,6 +41,7 @@
     border: 2px solid #180cc4;
     border-radius: 20px;
     background-color: #0aebeb;
+    
 
 }
 
@@ -62,6 +63,7 @@
     border-radius: 20px;
     box-shadow: 15px 15px 15px #03fdfd;
 
+    z-index: 100;
     top: 20px;
     right: 20px;
     opacity: 0;
@@ -72,16 +74,23 @@
 
 }
 
+.serv_item::-webkit-scrollbar {
+    width: 10px;
+}
 .serv_item::-webkit-scrollbar-track {
-        background: #0aebeb;
+        background: white;
     }
 
 .serv_item::-webkit-scrollbar-thumb {
-        background: #180cc4;
+        background: rgb(24, 12, 196, 0.8);
         border-radius: 12px;
     }
 .category:hover .serv_item {
     background-color: rgb(10, 235, 235, 0.5);
     opacity: 1;
     visibility: visible;
+
+    backdrop-filter: blur(40px);
+
 }
+

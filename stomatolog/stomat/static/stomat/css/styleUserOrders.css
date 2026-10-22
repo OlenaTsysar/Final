@@ -1,0 +1,28 @@
+.table-container { 
+    overflow-x: auto; 
+    max-width: 1000px; 
+    margin: 25px auto; } 
+    
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    background: white; 
+    box-shadow: 0 3px 10px #00000010; } 
+    
+th, td { 
+    padding: 14px; 
+    border-bottom: 1px solid #ddd; 
+    text-align: left; } 
+    
+th { 
+    background: #247ba0; 
+    color: white; } 
+    
+tr:hover { 
+    background: #eef7fb; } 
+    
+.empty { 
+    text-align: center; 
+    padding: 25px; 
+    background: white; 
+    border-radius: 8px; }

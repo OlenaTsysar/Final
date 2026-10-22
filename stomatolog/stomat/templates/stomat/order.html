@@ -8,10 +8,10 @@
 <form class="order_container" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    {{date_form.as_p}}
     <button type="submit">Create order</button>
-
+    <button type="submit"><a href="{% url 'user_orders' %}">Orders</a></button>
 </form>
+
 
 
 {% endblock main_content %}

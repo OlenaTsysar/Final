@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block main_content %}
+
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Войти</button>
+</form>
+
+{% endblock main_content %}

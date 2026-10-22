@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+{% include "includes/header.html" %}
+
+{% block main_content %}
+<div class="table_container">
+    {% if user_orders %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Врач</th>
+                    <th>Дата</th>
+                    <th>Время</th>
+                </tr>
+           </thead>
+
+            <tbody>
+                {% for order in user_orders %}
+                    <tr>
+                        <td>{{ order.doctor.name }}</td>
+                        <td>{{ order.date|date:"d.m.Y" }}</td>
+                        <td>{{ order.time|time:"H:i" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <div class="empty">
+            <p>У вас пока нет записей к врачу.</p> 
+        </div>
+    {% endif %}
+    <a href="{% url 'order_page' %}">Nazad</a>
+</div>    
+{% endblock main_content %}
+
