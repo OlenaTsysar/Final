@@ -100,6 +100,16 @@ class Order(models.Model):
                 name="unique_doctor_date_time")
             ]
 
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(verbose_name="Дата otziva")
+    description = models.TextField()
+
+class FAQ(models.Model):
+    question = models.TextField()
+    answer = models.TextField()
+
+
 
 
 
