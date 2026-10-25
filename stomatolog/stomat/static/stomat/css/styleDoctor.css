@@ -64,7 +64,7 @@
     object-fit: cover;
     border-radius: 5px;
     border: 1px solid #180cc4;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s ease;
 
     &:hover {
         transform: scale(2);
@@ -90,7 +90,7 @@
         object-fit: contain;
         border-radius: 5px;
         border: 1px solid #180cc4;
-        transition: transform 0.5s ease;
+        transition: transform 0.8s ease;
 
 
     }

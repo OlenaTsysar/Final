@@ -47,7 +47,7 @@ background-image: linear-gradient(to right, #0aebeb, white);
     left: -150%;
     width: 100%;
     max-width: 600px;
-    animation: showMap 0.5s ease;
+    animation: showMap 0.2s ease;
     
 }
  #map iframe {

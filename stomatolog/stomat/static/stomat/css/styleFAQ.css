@@ -4,16 +4,37 @@
 
 .FAQ_container, .review_container, .ord_container {
     width: 100%;
+    /* height: 10vh; */
     margin: 5px auto;
+    padding: 15px;
     display: flex;
     
     justify-content: space-around;
+    /* align-items: center; */
+
+    position: relative;
 
     background-color: rgb(10, 235, 235, 0.2);
 
     border: 5px solid blue;
     border-radius: 12px;
 
+}
+.FAQ_container button, .review_container button {
+    display: flex;
+    justify-content: center;
+    
+    position: absolute;
+    right: 5px;
+    padding: 5px;
+
+    width: 15vw;
+    align-items: center;
+
+    background-color: rgb(10, 235, 235, 0.5);
+
+    border: 2px solid blue;
+    border-radius: 12px;
 }
 
 .FAQ_list, .review_list {
@@ -57,7 +78,10 @@
 }
 
 .pagination button {
-    background: rgb(10, 235, 235, 0.5);
+    background: rgb(10, 235, 235, 0.3);
+    border: 1px solid blue;
+    border-radius: 12px;
+    padding: 3px;
 
 }
 

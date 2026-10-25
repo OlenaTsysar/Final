@@ -65,16 +65,17 @@
 
 <div class="review_container">
     <h2><a href="{% url 'review_page' %}">Отзывы</a></h2>
-    
+    <button type="submit"><a href="{% url 'review_create' %}">Оставить отзыв</a></button>
 </div>
 
 <div class="FAQ_container">
     <h2><a href="{% url 'FAQ_page' %}">FAQ</a></h2>
+    <button type="submit"><a href="{% url 'questionAsk_page' %}">Задать вопрос</a></button>
 </div>
 
 <div class="ord_container">
-    <h2><a href="{% url 'order_page' %}">Order</a></h2>
+    <h2><a href="{% url 'order_page' %}">Записаться</a></h2>
 </div>
-<button type="submit"><a href="{% url 'review_create' %}">Create review</a></button>
-{% comment %} <button type="submit"><a href="{% url 'review_create' %}">Create question</a></button> {% endcomment %}
+
+
 {% endblock main_content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main_content %}
+
+<h2>Задать вопрос клинике</h2>
+
+{% if success %}
+    <p>Ваш вопрос успешно отправлен!</p>
+{% endif %}
+
+<form class="question_container" method="post" action="{% url 'questionAsk_page' %}">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit">Отправить</button>
+
+
+</form>
+
+
+
+
+{% endblock main_content %}

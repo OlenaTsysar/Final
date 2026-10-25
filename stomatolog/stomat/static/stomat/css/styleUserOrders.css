@@ -1,6 +1,6 @@
 .table_container { 
     overflow-x: auto; 
-    max-width: 800px; 
+    /* max-width: 800px;  */
     width: 90%;
     margin: 25px auto; 
     
@@ -35,3 +35,8 @@ tr:hover {
     padding: 25px; 
     background: white; 
     border-radius: 8px; }
+
+.table_container a {
+    display: block;
+    text-align: center;
+}

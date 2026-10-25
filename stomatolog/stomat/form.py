@@ -40,9 +40,6 @@ class OrderForm(forms.ModelForm):
         ]
 
 
-
-
-
 class DoctorCategoryForm(forms.ModelForm):
         class Meta:
             model = DoctorCategory
@@ -51,7 +48,7 @@ class DoctorCategoryForm(forms.ModelForm):
         def clean_name(self):
             name = self.cleaned_data["name"]
             if len(name) < 3:
-                raise ValidationError ("Korotkoe nazvanie")
+                raise ValidationError ("Короткое имя")
             return name
 
 class DoctorCreateForm(forms.ModelForm):
@@ -114,4 +111,10 @@ class LoginForm(forms.Form):
             if self.user is None:
                 raise forms.ValidationError("Неверный логин или пароль")
         return cleaned_data
-    
+
+class QuestionForm(forms.Form):
+    name = forms.CharField(label="Имя клиента")
+    email = forms.EmailField(label="Email")
+    question = forms.CharField(
+        label="Ваш вопрос",
+        widget=forms.Textarea())

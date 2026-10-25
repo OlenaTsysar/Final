@@ -4,7 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from .models import service, Category, Price, DoctorsQualification, doctors, DoctorCategory, ourJobs, Order, FAQ, Review
-from .form import OrderForm, DoctorCreateForm, DoctorUpdateForm, OrderForm, LoginForm
+from .form import OrderForm, DoctorCreateForm, DoctorUpdateForm, OrderForm, LoginForm, QuestionForm
 from django.views.generic import ListView, CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -21,6 +21,9 @@ from django.utils import timezone
 
 from django.views.decorators.http import require_GET
 from django.shortcuts import get_object_or_404
+
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 
 
@@ -335,6 +338,40 @@ class FAQListView(ListView):
     context_object_name = "FAQs"
     paginate_by = 2
 
+def QuestionAsk (request):
+
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            question = form.cleaned_data['question']
+
+            email_message = EmailMessage (
+                subject=f'Вопрос от клиента клиники: {name}',
+                body=(
+                    f'Имя: {name}\n'
+                    f'Email посетителя: {email}\n\n'
+                    f'Вопрос:\n{question}'
+                    ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=['finalproekt102@gmail.com'],
+                reply_to=[email],
+            )
+                
+            email_message.send (fail_silently=False)    
+            
+            return render(request, 'stomat/questionAsk.html', { 'form': QuestionForm(), 'success': True})
+
+    else:
+        form = QuestionForm()
+
+    return render(request, 'stomat/questionAsk.html', {'form': form})
+
+
+
+
 class ReviewListView(ListView):
     model = Review
     template_name = 'stomat/Review.html'
@@ -354,3 +391,4 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
     def form_invalid(self, form):
         print("ОШИБКИ ФОРМЫ:", form.errors)
         return super().form_invalid(form)
+
