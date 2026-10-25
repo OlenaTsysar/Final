@@ -73,7 +73,8 @@
 </div>
 
 <div class="ord_container">
-    <h2>Order</h2>
+    <h2><a href="{% url 'order_page' %}">Order</a></h2>
 </div>
-
+<button type="submit"><a href="{% url 'review_create' %}">Create review</a></button>
+{% comment %} <button type="submit"><a href="{% url 'review_create' %}">Create question</a></button> {% endcomment %}
 {% endblock main_content %}

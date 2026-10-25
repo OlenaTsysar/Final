@@ -1,13 +1,22 @@
-.table-container { 
+.table_container { 
     overflow-x: auto; 
-    max-width: 1000px; 
-    margin: 25px auto; } 
+    max-width: 800px; 
+    width: 90%;
+    margin: 25px auto; 
+    
+    border: 5px solid blue;
+    border-radius: 12px;
+
+    } 
     
 table { 
     width: 100%; 
     border-collapse: collapse; 
     background: white; 
-    box-shadow: 0 3px 10px #00000010; } 
+    box-shadow: 0 3px 10px #00000010;
+
+
+} 
     
 th, td { 
     padding: 14px; 
@@ -15,8 +24,8 @@ th, td {
     text-align: left; } 
     
 th { 
-    background: #247ba0; 
-    color: white; } 
+    background: rgb(10, 235, 235, 0.5); 
+    color: blue; } 
     
 tr:hover { 
     background: #eef7fb; } 

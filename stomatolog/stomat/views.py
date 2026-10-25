@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from .models import service, Category, Price, DoctorsQualification, doctors, DoctorCategory, ourJobs, Order, FAQ, Review
 from .form import OrderForm, DoctorCreateForm, DoctorUpdateForm, OrderForm, LoginForm
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
@@ -338,3 +340,17 @@ class ReviewListView(ListView):
     template_name = 'stomat/Review.html'
     context_object_name = "reviews"
     paginate_by = 2
+
+class ReviewCreateView(LoginRequiredMixin, CreateView):
+    model = Review
+    fields = ['description']
+    template_name = 'stomat/review_form.html'
+    success_url = reverse_lazy('review_page')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("ОШИБКИ ФОРМЫ:", form.errors)
+        return super().form_invalid(form)

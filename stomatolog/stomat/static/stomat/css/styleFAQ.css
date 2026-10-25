@@ -1,16 +1,22 @@
-.FAQ_container {
+* {
+    text-decoration: none;
+}
+
+.FAQ_container, .review_container, .ord_container {
     width: 100%;
-    margin: 0 auto;
+    margin: 5px auto;
     display: flex;
     
     justify-content: space-around;
+
+    background-color: rgb(10, 235, 235, 0.2);
 
     border: 5px solid blue;
     border-radius: 12px;
 
 }
 
-.FAQ_list {
+.FAQ_list, .review_list {
     position: relative;
     isolation: isolate;
     width: 50%;
@@ -21,11 +27,9 @@
     border: 2px solid blue;
     border-radius: 12px;
 
- 
+ }
 
-}
-
-.FAQ_list::before {
+.FAQ_list::before, .review_list::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -42,4 +46,21 @@
 .FAQ_list p {
     margin-bottom: 15px;
 
+}
+.FAQ_p_qu {
+    font-weight: 800;
+}
+
+.aktiv_button {
+    color: blue;
+    background: #0aebeb;
+}
+
+.pagination button {
+    background: rgb(10, 235, 235, 0.5);
+
+}
+
+.pagination a, a:visited, a:hover, a:active {
+    color: blue;
 }

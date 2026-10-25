@@ -1,6 +1,6 @@
 .order_container {
     display: flex;
-    margin: 10vh auto;
+    margin: 5vh auto;
     flex-direction: column;
     text-align: center;
     justify-content: space-around;
@@ -9,34 +9,44 @@
 
     border: 5px solid blue;
     border-radius: 20px;
-    & p {
+    background-color: rgb(10, 235, 235, 0.5);
+
+    box-shadow: 15px 15px 15px #03fdfd;
+
+
+    
+
+}
+
+.order_container p {
         color: blue;
         font-size: 20px;
         height: 5vh;
 
-        & input, & select {
+        }
+
+.order_container input, .order_container select {
 
             height: 5vh;
             border-radius: 10px;
             border: 3px solid blue;
-
-        }
-
+        
+            color: blue;
     }
 
-    & button {
+.order_container button {
         display: flex;
         margin: 0 auto;
         text-align: center;
         justify-content: center;
         align-items: center;
-        width: 10vw;
+        width: 15vw;
         height: 5vh;
+        padding: 5px;
 
         border-radius: 10px;
         border: 3px solid blue;
         color: blue;
         font-size: 15px;
+        background: rgb(10, 235, 235, 0.8);
     }
-
-}

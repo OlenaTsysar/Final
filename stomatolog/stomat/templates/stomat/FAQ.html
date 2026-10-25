@@ -6,7 +6,7 @@
 <div class="FAQ_container">
     {% for FAQ in FAQs %}
         <li class="FAQ_list">
-            <p class="FAQ_p">{{ FAQ.question }}</p>
+            <p class="FAQ_p_qu">{{ FAQ.question }}</p>
             <p class="FAQ_p">{{ FAQ.answer }}</p>
         </li>
 
@@ -15,21 +15,21 @@
 {% if is_paginated %}
   <div class="pagination">
     {% if page_obj.has_previous %}
-      <a href="?page=1">Первая</a>
-      <a href="?page={{ page_obj.previous_page_number }}"><</a>
+      <button><a href="?page=1">Первая</a></button>
+      <button><a href="?page={{ page_obj.previous_page_number }}"><</a></button>
     {% endif %}
 
      {% for page_num in paginator.page_range %}
       {% if page_num == page_obj.number %}
-        <strong>{{ page_num }}</strong>
+        <button class="aktiv_button"><strong>{{ page_num }}</strong></button>
       {% else %}
-        <a href="?page={{ page_num }}">{{ page_num }}</a>
+        <button><a href="?page={{ page_num }}">{{ page_num }}</a></button>
       {% endif %}
     {% endfor %}
 
     {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">></a>
-      <a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
+      <button><a href="?page={{ page_obj.next_page_number }}">></a></button>
+      <button><a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a></button>
     {% endif %}
   </div>
 {% endif %}

@@ -8,8 +8,8 @@
 <form class="order_container" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
-    <button type="submit">Create order</button>
-    <button type="submit"><a href="{% url 'user_orders' %}">Orders</a></button>
+    <button type="submit">Записаться</button>
+    <button type="submit"><a href="{% url 'user_orders' %}">Ваши записи</a></button>
 </form>
 
 

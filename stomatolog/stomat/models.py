@@ -102,8 +102,12 @@ class Order(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateTimeField(verbose_name="Дата otziva")
+    date = models.DateTimeField(auto_now_add=True, verbose_name="Дата otziva")
     description = models.TextField()
+
+    def __str__(self):
+        return self.user.username
+    
 
 class FAQ(models.Model):
     question = models.TextField()
