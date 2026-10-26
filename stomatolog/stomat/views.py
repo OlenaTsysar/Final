@@ -5,15 +5,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from .models import service, Category, Price, DoctorsQualification, doctors, DoctorCategory, ourJobs, Order, FAQ, Review
 from .form import OrderForm, DoctorCreateForm, DoctorUpdateForm, OrderForm, LoginForm, QuestionForm
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, TemplateView, FormView, RedirectView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView
+
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.db import IntegrityError, transaction
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, FormView, RedirectView
+
 from django.contrib.auth import login, logout
 
 from datetime import datetime, time, timedelta, date
@@ -25,9 +25,18 @@ from django.shortcuts import get_object_or_404
 from django.core.mail import EmailMessage
 from django.conf import settings
 
+from .mixins import EditUserRequiredMixin
+from django.core.exceptions import PermissionDenied
+
 
 
 # Create your views here.
+
+def is_editor(user):
+    if user.is_authenticated and (user.groups.filter(name="Editor").exists() or user.is_superuser):
+        return True
+    raise PermissionDenied
+
 def Home(request):
     category = Category.objects.all()
     return render(request, 'stomat/home.html', {'category': category})
@@ -57,6 +66,9 @@ class DoctorsView(TemplateView):
 
         context["category"] = categories
 
+        user = self.request.user
+        context["is_editor"] = is_editor(user)
+
         # context["category"] = category_list
         # context["doctors"] = page_obj
         # context["page_obj"] = page_obj
@@ -73,6 +85,11 @@ def Doctor_page(request, id):
         context["doc"] = doc
     except doctors.DoesNotExist:
         context["doc"] = None
+
+    context["is_editor"] = (
+        request.user.is_authenticated
+        and request.user.groups.filter(name="Editor").exists() or request.user.is_superuser
+        )
     return render(request, 'stomat/doctor.html', context)
 
 def Servise(request):
@@ -84,60 +101,6 @@ def Servise(request):
     }
     return render(request, 'stomat/servise.html', context)
 
-# def Order(request):
-#     if request.method == "GET":
-#         form = OrderForm()
-    #     # date_form = DateForm()
-    #     return render(request, "stomat/order.html", {"form": form})
-
-    # if request.method == "POST":
-       
-    #     form = OrderForm(request.POST)
-    #     # date_form = DateForm(request.POST)
-
-    #     if form.is_valid():
-
-    #         form.save()
-            
-
-    #         # rezerv.is_buzy = True
-    #         # rezerv.save()     
-            
-    #         # name = form.cleaned_data["name"]
-    #         # email = form.cleaned_data["email"]
-    #         # telefon = form.cleaned_data["telefon"]
-
-    #         # date = form.cleaned_data["date"]
-    #         # time = form.cleaned_data["time"]
-  
-            
-    #         # form = OrderForm()
-    #         # date_form = DateForm()
-    #         return render(request, "stomat/order.html", {"form": form})
-    # else:
-    #     form = OrderForm()
-    #     # date_form = DateForm()
-
-    # return render(request, "stomat/order.html", {"form": form})
-
-    # return HttpResponse('order')
-
-# def Date_oder (request):
-
-#     if request.method == "POST":
-#         date_form = DateForm(request.POST)
-
-#         print(date_form.fields["date"].queryset)
-#         if date_form.is_valid():
-#             rezerv = date_form.cleaned_data['date']
-#             rezerv.is_buzy = True
-#             rezerv.save()           
-#             date_form = DateForm()
-
-#     else:
-#         date_form = DateForm()
-
-#     return render(request, "stomat/order.html", {"date_form": date_form})
 
 def get_free_times(doctor, selected_date):
     start_work = time(9, 0)
@@ -254,6 +217,8 @@ def Price_page(request):
 def Contacts(request):
     return render(request, 'stomat/contacts.html')
 
+@login_required
+@user_passes_test(is_editor)
 def Create_doctor(request):
     if request.method == "GET":
         form = DoctorCreateForm()
@@ -272,7 +237,7 @@ class OurJobsListView(ListView):
     context_object_name = "jobs"
     paginate_by = 1
 
-class DoctorsUpdateView(UpdateView):
+class DoctorsUpdateView(EditUserRequiredMixin, UpdateView):
     model = doctors
     form_class = DoctorUpdateForm
     template_name = "stomat/update_doctor.html"
@@ -280,7 +245,7 @@ class DoctorsUpdateView(UpdateView):
     pk_url_kwarg = 'id'
 
 
-class DoctorDeleteView(DeleteView):
+class DoctorDeleteView(EditUserRequiredMixin, DeleteView):
     model = doctors
     template_name = "stomat/doctor_confirm_delete.html"
     success_url = reverse_lazy("doctors_page")

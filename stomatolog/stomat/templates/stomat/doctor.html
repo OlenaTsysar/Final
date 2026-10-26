@@ -35,12 +35,15 @@
                 </div>
 
                 
-                <a href="{% url 'doctors_page' %}">Nazad</a>
-                <a href="{% url 'update_doctor' id=doc.id %}">Update</a>
-                <a href="{% url 'delete_doctor' id=doc.id %}">Delete</a>
+                <a href="{% url 'doctors_page' %}">Назад</a>
+                {% if is_editor or is_superuser %}
+                    <a href="{% url 'update_doctor' id=doc.id %}">Обновить</a>
+                    <a href="{% url 'delete_doctor' id=doc.id %}">Удалить</a>
+                {% endif %}
+
                 </li>
         {% else %}
-            <p>No such doctor</p>
+            <p>Такого доктора нет</p>
         {% endif %}
         
     </ul>

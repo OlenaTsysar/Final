@@ -1,0 +1,35 @@
+.update_doctor_form {
+    width: 60%;
+    height: 60%;
+    
+    margin: 5px auto;
+    padding: 5px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+
+    border: 5px solid blue;
+    border-radius: 12px;
+    background: rgb(10, 235, 235, 0.5);
+    color: blue;
+    font-size: 16px;
+
+}
+
+.update_doctor_form input, .update_doctor_form textarea, .update_doctor_form select, .update_doctor_form button {
+    padding: 5px;
+    color: blue;
+
+    border: 2px solid blue;
+    border-radius: 8px;
+
+}
+
+.update_doctor_form button {
+    margin: 0 auto;
+    /* display: flex;
+    justify-content: center; */
+    width: 40%;
+    background: rgb(10, 235, 235, 0.8);
+}
+

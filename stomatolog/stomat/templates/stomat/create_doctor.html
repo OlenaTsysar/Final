@@ -2,10 +2,10 @@
 
 {% block main_content %}
 
-<form action="" method="post" enctype="multipart/form-data">
+<form class="create_doctor_form" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form}}
-    <button type="submit">Create doctor</button>
+    <button type="submit">Создать врача</button>
 
 </form>
 <a href="{% url 'doctors_page' %}">Nazad</a>

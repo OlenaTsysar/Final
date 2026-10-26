@@ -11,8 +11,10 @@
             <li class = "categ_all_doc_item">
                 <p>{{categ.name}}</p>
             </li>
-                            <a href="{% url 'create_doctor' %}">Создать</a>
-
+                {% if is_editor or is_superuser %}
+                    <a href="{% url 'create_doctor' %}">Создать</a>
+                {% endif %}
+                            
             <div class="doc_category_list">
                 {% for doc in categ.page_obj %}
                     <li class="all_doc_item">

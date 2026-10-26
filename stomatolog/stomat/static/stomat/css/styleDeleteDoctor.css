@@ -1,0 +1,44 @@
+.delete_doctor_container {
+    width: 60%;
+    height: 60vh;
+    
+    margin: 5px auto;
+    padding: 5px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    border: 5px solid blue;
+    border-radius: 12px;
+    background: rgb(10, 235, 235, 0.5);
+    color: blue;
+    font-size: 16px;
+
+}
+
+.delete_doctor_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 60%;
+}
+.delete_doctor_form button {
+    /* margin: 0 auto; */
+    width: 60%;
+
+    margin: 15px;
+    padding: 5px;
+    color: blue;
+
+    border: 2px solid blue;
+    border-radius: 8px;
+    background: rgb(10, 235, 235, 0.8);
+
+}
+
+

@@ -18,12 +18,12 @@ class DoctorCategory(models.Model):
 
 class doctors(models.Model):
 
-    name = models.CharField(max_length=60)
+    name = models.CharField(max_length=60, verbose_name="Имя")
     # qualification = models.ForeignKey(DoctorsQualification, on_delete=models.CASCADE, related_name="doctors", null=True, blank=True)
-    description = models.TextField(default=" ")
-    experience = models.CharField(max_length=100)
-    category = models.ForeignKey(DoctorCategory, on_delete=models.PROTECT, related_name="doctors", null=True, blank=True)
-    photo = models.ImageField(upload_to='stomat/image', null=True, blank=True)
+    description = models.TextField(default=" ", verbose_name="Описание")
+    experience = models.CharField(max_length=100, verbose_name="Опыт")
+    category = models.ForeignKey(DoctorCategory, on_delete=models.PROTECT, related_name="doctors", null=True, blank=True, verbose_name="Категория")
+    photo = models.ImageField(upload_to='stomat/image', null=True, blank=True, verbose_name="Фото")
 
     class Meta:
         ordering = ['name']
