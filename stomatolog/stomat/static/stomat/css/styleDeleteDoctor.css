@@ -1,4 +1,4 @@
-.delete_doctor_container {
+.delete_doctor_container, .login_form_container, .register_form_container {
     width: 60%;
     height: 60vh;
     
@@ -20,14 +20,14 @@
 
 }
 
-.delete_doctor_form {
+.delete_doctor_form, .login_form, .register_form_container form {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     width: 60%;
 }
-.delete_doctor_form button {
+.delete_doctor_form button, .login_form button, .register_form_container button {
     /* margin: 0 auto; */
     width: 60%;
 
@@ -39,6 +39,20 @@
     border-radius: 8px;
     background: rgb(10, 235, 235, 0.8);
 
+}
+
+.login_form p {
+    margin: 15px;
+    color: blue;
+    font-size: 20px;
+    height: 5vh;
+}
+.login_form input, .register_form_container input {
+    height: 5vh;
+    border-radius: 10px;
+    border: 3px solid blue;
+        
+    color: blue;
 }
 
 

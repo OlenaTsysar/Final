@@ -2,11 +2,12 @@
 
 {% block main_content %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Registration</button>
-</form>
-
+<div class="register_form_container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Регистрация</button>
+    </form>
+</div>
 
 {% endblock main_content %}

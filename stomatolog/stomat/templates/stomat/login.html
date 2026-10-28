@@ -5,13 +5,14 @@
 
 {% block main_content %}
 
+<div class="login_form_container">
+    <form class="login_form" method="post">
+        {% csrf_token %}
 
-<form method="post">
-    {% csrf_token %}
+        {{ form.as_p }}
 
-    {{ form.as_p }}
-
-    <button type="submit">Войти</button>
-</form>
+        <button type="submit">Войти</button>
+    </form>
+</div>
 
 {% endblock main_content %}

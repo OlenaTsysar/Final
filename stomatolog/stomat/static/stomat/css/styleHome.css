@@ -1,4 +1,4 @@
-.reklama_container, .descript_container, .uslugi_container {
+.reklama_container, .descript_container, .uslugi_container, .user_auth {
     /* display: flex;
     justify-content: column;
     flex-wrap: wrap; */
@@ -44,4 +44,16 @@
 .uslugi_container p {
     font-size: 26px;
     font-weight: 600;
+}
+
+.user_auth button {
+    width: 30%;
+
+    margin: 15px;
+    padding: 5px;
+    color: blue;
+
+    border: 2px solid blue;
+    border-radius: 8px;
+    background: rgb(10, 235, 235, 0.8);
 }

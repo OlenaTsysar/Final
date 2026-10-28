@@ -1,5 +1,5 @@
 from django import forms
-from .models import DoctorCategory, doctors, DoctorsQualification, Order
+from .models import DoctorCategory, doctors, DoctorsQualification, Order, Price
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -118,3 +118,8 @@ class QuestionForm(forms.Form):
     question = forms.CharField(
         label="Ваш вопрос",
         widget=forms.Textarea())
+
+class PriceCreateForm(forms.ModelForm):
+    class Meta:
+        model = Price
+        fields = "__all__"

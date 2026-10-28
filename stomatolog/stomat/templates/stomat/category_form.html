@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block main_content %}
+
+<h2>Создать категорию</h2>
+<form action="{% url 'category_create_page' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Отправить</button>
+</form>
+<a href="{% url 'price_page' %}">Назад</a>
+
+
+{% endblock main_content %}

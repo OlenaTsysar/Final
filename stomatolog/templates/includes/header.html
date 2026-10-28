@@ -7,16 +7,23 @@
         <span></span>
     </div>
        
+    <div class=ikonka>
+        <a href="{% url 'home_page' %}">
+            <img src="{% static 'stomat/image/tooth.png' %}" alt="">
+            <span class="spanIkonkaNav">StomatMed</span>
+        </a>
+    </div>
+
     
     <ul class="nav_list">
-        <li class="list_item">
+        {% comment %} <li class="list_item">
             <div class=ikonka>
                 <a href="{% url 'home_page' %}">
                     <img src="{% static 'stomat/image/tooth.png' %}" alt="">
                     <span class="spanIkonkaNav">StomatMed</span>
                 </a>
             </div>
-        </li>
+        </li> {% endcomment %}
         <li class="list_item1">
             <a class="listbut" href="{% url 'home_page' %}">Главная</a>
         </li>

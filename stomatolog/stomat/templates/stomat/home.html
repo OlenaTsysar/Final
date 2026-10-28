@@ -6,15 +6,15 @@
 {% block main_content %}
 <div class="user_auth">
     {% if user.is_authenticated %}
-        Hello, {{user.username}}
+        <h3>Добро пожаловать, {{user.username}}!</h3>
         <form action="{% url 'logout_page' %}" method="post">
             {% csrf_token %}
             <button type="submit">Выйти</button>        
         </form>
      
     {% else %}
-        <a href="{% url 'login_page'%}">Войти</a>
-        <a href="{% url 'register_page'%}">Register</a>
+        <button type="submit"><a href="{% url 'login_page'%}">Войти</a></button>
+        <button type="submit"><a href="{% url 'register_page'%}">Регистрация</a></button>
     {% endif %}
 </div>
     

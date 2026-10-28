@@ -10,6 +10,9 @@
         <table>
             <thead>
                 <tr>
+                    {% if user.is_superuser %}
+                        <th>Пользователь</th>
+                    {% endif %}
                     <th>Врач</th>
                     <th>Дата</th>
                     <th>Время</th>
@@ -19,6 +22,9 @@
             <tbody>
                 {% for order in user_orders %}
                     <tr>
+                        {% if user.is_superuser %}
+                            <td>{{order.user.username}}</td>
+                        {% endif %}
                         <td>{{ order.doctor.name }}</td>
                         <td>{{ order.date|date:"d.m.Y" }}</td>
                         <td>{{ order.time|time:"H:i" }}</td>

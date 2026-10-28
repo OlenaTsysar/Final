@@ -25,7 +25,7 @@ from django.shortcuts import get_object_or_404
 from django.core.mail import EmailMessage
 from django.conf import settings
 
-from .mixins import EditUserRequiredMixin
+from .mixins import EditUserRequiredMixin, AdministratorUserRequiredMixin
 from django.core.exceptions import PermissionDenied
 
 
@@ -199,7 +199,10 @@ class UserOrderView(ListView):
     context_object_name = "user_orders"
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user).select_related("doctor")
+        if self.request.user.is_superuser:
+            return Order.objects.select_related("user")
+        else:
+            return Order.objects.filter(user=self.request.user).select_related("doctor")
 
 
 def Price_page(request):
@@ -356,4 +359,96 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
     def form_invalid(self, form):
         print("ОШИБКИ ФОРМЫ:", form.errors)
         return super().form_invalid(form)
+
+class PriceCreateView(AdministratorUserRequiredMixin, CreateView):
+    model = Price
+    fields = ['name', 'price', 'category']
+    template_name = 'stomat/price_form.html'
+    success_url = reverse_lazy('price_create_page')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("ОШИБКИ ФОРМЫ:", form.errors)
+        return super().form_invalid(form)
+
+class PriceUpdateView(AdministratorUserRequiredMixin, UpdateView):
+    model = Price
+    fields = ['name', 'price', 'category']
+    template_name = 'stomat/price_update_form.html'
+    success_url = reverse_lazy('price_update_page')
+    pk_url_kwarg = 'id'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("ОШИБКИ ФОРМЫ:", form.errors)
+        return super().form_invalid(form)
+
+class PriceDeleteView(AdministratorUserRequiredMixin, DeleteView):
+    model = Price
+    fields = ['name', 'price', 'category']
+    template_name = 'stomat/price_delete_form.html'
+    success_url = reverse_lazy('price_delete_page')
+    pk_url_kwarg = 'id'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("ОШИБКИ ФОРМЫ:", form.errors)
+        return super().form_invalid(form)
+
+class CategoryCreateView(AdministratorUserRequiredMixin, CreateView):
+    model = Category
+    fields = ['name']
+    template_name = 'stomat/category_form.html'
+    success_url = reverse_lazy('category_create_page')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("ОШИБКИ ФОРМЫ:", form.errors)
+        return super().form_invalid(form)
+
+class CategoryUpdateView(AdministratorUserRequiredMixin, UpdateView):
+    model = Category
+    fields = ['name']
+    template_name = 'stomat/category_update_form.html'
+    success_url = reverse_lazy('category_update_page')
+    pk_url_kwarg = 'id'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("ОШИБКИ ФОРМЫ:", form.errors)
+        return super().form_invalid(form)
+
+
+
+class CategoryDeleteView(AdministratorUserRequiredMixin, DeleteView):
+    model = Category
+    fields = ['name']
+    template_name = 'stomat/category_delete_form.html'
+    success_url = reverse_lazy('category_delete_page')
+    pk_url_kwarg = 'id'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("ОШИБКИ ФОРМЫ:", form.errors)
+        return super().form_invalid(form)
+
+
 
