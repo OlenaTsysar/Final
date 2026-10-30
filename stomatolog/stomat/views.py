@@ -35,7 +35,17 @@ from django.core.exceptions import PermissionDenied
 def is_editor(user):
     if user.is_authenticated and (user.groups.filter(name="Editor").exists() or user.is_superuser):
         return True
+    # raise PermissionDenied
+
+def is_administrator (user):
+    if user.is_authenticated and (user.groups.filter(name="Administrator").exists() or user.is_superuser):
+            return True
     raise PermissionDenied
+
+def my_view(request):
+    return render(request, 'stomat/includes/footer.html', {
+        'EMAIL_HOST_USER': settings.EMAIL_HOST_USER
+    })
 
 def Home(request):
     category = Category.objects.all()
@@ -66,6 +76,12 @@ class DoctorsView(TemplateView):
 
         context["category"] = categories
 
+        # user = self.request.user
+        # context["is_editor"] = (
+        #     user.is_authenticated
+        #     and (user.groups.filter(name="Editor").exists() or user.is_superuser)
+        # )
+
         user = self.request.user
         context["is_editor"] = is_editor(user)
 
@@ -86,10 +102,15 @@ def Doctor_page(request, id):
     except doctors.DoesNotExist:
         context["doc"] = None
 
-    context["is_editor"] = (
-        request.user.is_authenticated
-        and request.user.groups.filter(name="Editor").exists() or request.user.is_superuser
-        )
+    # user = request.user
+    # context["is_editor"] = (
+    #     user.is_authenticated
+    #     and (user.groups.filter(name="Editor").exists() or user.is_superuser)
+    #     )
+
+    user = request.user
+    context["is_editor"] = is_editor(user)
+
     return render(request, 'stomat/doctor.html', context)
 
 def Servise(request):
@@ -212,6 +233,10 @@ def Price_page(request):
         "category": category_list,
         "price": price_list
     }
+    context["is_administrator"] = (
+        request.user.is_authenticated
+        and request.user.groups.filter(name="Administrator").exists() or request.user.is_superuser
+        )
     return render(request, 'stomat/price.html', context)
 
 # def OurJobs(request):

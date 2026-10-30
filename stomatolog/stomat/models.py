@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, verbose_name="Категория")
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -62,9 +62,9 @@ class ourJobs(models.Model):
     description = models.TextField()
 
 class Price(models.Model):
-    name = models.CharField(max_length=250)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE , related_name="price")
+    name = models.CharField(max_length=250, verbose_name="Услуга")
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE , related_name="price", verbose_name="Категория")
 
     class Meta: 
         ordering = ['name']
@@ -84,7 +84,7 @@ class Date(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    doctor = models.ForeignKey(doctors, on_delete=models.CASCADE, related_name="orders")
+    doctor = models.ForeignKey(doctors, on_delete=models.CASCADE, related_name="orders", verbose_name="Доктор")
     date = models.DateField(verbose_name="Дата записи")
     time = models.TimeField(verbose_name="Время записи")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -103,7 +103,7 @@ class Order(models.Model):
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True, verbose_name="Дата otziva")
-    description = models.TextField()
+    description = models.TextField(verbose_name="Описание")
 
     def __str__(self):
         return self.user.username

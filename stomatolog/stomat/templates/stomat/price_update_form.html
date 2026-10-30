@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block main_content %}
+
+<div class="update_price_container">
+    <h2>Изменить услугу</h2>
+    <form action="{% url 'price_update_page' id=object.pk %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Отправить</button>
+    </form>
+    <a href="{% url 'price_page' %}">Назад</a>
+</div>
+
+{% endblock main_content %}

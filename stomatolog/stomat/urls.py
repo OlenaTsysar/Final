@@ -15,13 +15,9 @@ urlpatterns = [
     path('price/create/', PriceCreateView.as_view(), name="price_create_page"),
     path('price/update/<int:id>', PriceUpdateView.as_view(), name="price_update_page"),
     path('price/delete/<int:id>', PriceDeleteView.as_view(), name="price_delete_page"),
-
-
     path('category/create/', CategoryCreateView.as_view(), name="category_create_page"),
     path('category/update/<int:id>', CategoryUpdateView.as_view(), name="category_update_page"),
     path('category/delete/<int:id>', CategoryDeleteView.as_view(), name="category_delete_page"),
-
-
     path('our_jobs/', OurJobsListView.as_view(), name="our_jobs_page"),
     path('order/', OrderView, name="order_page"),
     path('user_orders/', UserOrderView.as_view(), name="user_orders"),

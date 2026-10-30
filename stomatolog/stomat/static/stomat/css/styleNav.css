@@ -102,7 +102,7 @@ background-image: linear-gradient(to right, #0aebeb, white);
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    justify-content: space-evenly
+    justify-content: space-evenly;
 
 
     width: 25%;

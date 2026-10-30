@@ -4,22 +4,23 @@
 
 {% block main_content %}
 
-<h2>Задать вопрос клинике</h2>
+<div class="questionAsk_container">
+    <h2>Задать вопрос клинике</h2>
 
-{% if success %}
-    <p>Ваш вопрос успешно отправлен!</p>
-{% endif %}
+    {% if success %}
+        <p>Ваш вопрос успешно отправлен!</p>
+    {% endif %}
 
-<form class="question_container" method="post" action="{% url 'questionAsk_page' %}">
-    {% csrf_token %}
+    <form class="questionAsk_form" method="post" action="{% url 'questionAsk_page' %}">
+        {% csrf_token %}
 
-    {{form.as_p}}
+        {{form.as_p}}
 
+        
+
+    </form>
     <button type="submit">Отправить</button>
-
-
-</form>
-
+</div>
 
 
 

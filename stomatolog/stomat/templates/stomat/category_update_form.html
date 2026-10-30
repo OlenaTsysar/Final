@@ -4,14 +4,14 @@
 
 
 {% block main_content %}
-
-<h2>Изменить категорию</h2>
-<form action="{% url 'category_update_page' id=object.pk %}" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Отправить</button>
-</form>
-<a href="{% url 'price_page' %}">Назад</a>
-
+<div class="update_category_container">
+    <h2>Изменить категорию</h2>
+    <form class="update_category_form" action="{% url 'category_update_page' id=object.pk %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Отправить</button>
+    </form>
+    <a href="{% url 'price_page' %}">Назад</a>
+</div>
 
 {% endblock main_content %}

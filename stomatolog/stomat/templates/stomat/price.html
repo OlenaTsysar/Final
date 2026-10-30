@@ -5,10 +5,16 @@
 {% include "includes/header.html" %}
 
 {% block main_content %}
+<div class="price_container">
     <ul class="price_list">
         {% for categ in category %}
             <li class="categ_item">
             <p>{{categ.name}}</p>
+            {% if is_administrator or is_superuser %}
+                <button type="submit"><a href="{% url 'category_update_page' id=categ.pk %}">Изменить категорию</a></button>
+                <button type="submit"><a href="{% url 'category_delete_page' id=categ.pk %}">Удалить категорию</a></button>
+            {% endif %}
+            
             </li>
 
             {% for price in categ.price.all %}
@@ -16,19 +22,23 @@
                 <p>{{price.name}}</p>
                 <span>{{price.price}}</span>
                 </li>
+            {% if is_administrator or is_superuser %}
+                <button type="submit"><a href="{% url 'price_update_page' id=price.pk %}">Изменить услугу</a></button>
+                <button type="submit"><a href="{% url 'price_delete_page' id=price.pk %}">Удалить услугу</a></button>
+            {% endif %}
             
-            <button type="submit"><a href="{% url 'price_update_page' id=price.pk %}">Изменить услугу</a></button>
-            <button type="submit"><a href="{% url 'price_delete_page' id=price.pk %}">Удалить услугу</a></button>
             {% endfor %}
 
-        <button type="submit"><a href="{% url 'category_update_page' id=categ.pk %}">Изменить категорию</a></button>
-        <button type="submit"><a href="{% url 'category_delete_page' id=categ.pk %}">Удалить категорию</a></button>
+
         {% endfor %}
     
     </ul>
+    {% if is_administrator or is_superuser %}
     
-    <button type="submit"><a href="{% url 'price_create_page' %}">Создать услугу</a></button>
-    <button type="submit"><a href="{% url 'category_create_page' %}">Создать категорию</a></button>
+        <button type="submit"><a href="{% url 'category_create_page' %}">Создать категорию</a></button>
+        <button type="submit"><a href="{% url 'price_create_page' %}">Создать услугу</a></button>
+
+    {% endif %}
 
     
 

@@ -1,0 +1,59 @@
+.delete_price_container, .create_price_container, .update_price_container {
+    width: 60%;
+    height: 60vh;
+    
+    margin: 5px auto;
+    padding: 5px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    border: 5px solid blue;
+    border-radius: 12px;
+    background: rgb(10, 235, 235, 0.5);
+    color: blue;
+    font-size: 16px;
+
+}
+
+.delete_price_form, .create_price_container form, .update_price_container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 70%;
+    height: 60%;
+}
+.delete_price_container button, .create_price_container button, .update_price_container button {
+    /* margin: 0 auto; */
+    width: 60%;
+
+    margin: 15px;
+    padding: 5px;
+    color: blue;
+
+    border: 2px solid blue;
+    border-radius: 8px;
+    background: rgb(10, 235, 235, 0.8);
+
+}
+
+.delete_price_form p, .create_price_container p, .update_price_container p {
+    margin: 15px;
+    color: blue;
+    font-size: 1.1em;
+    height: 5vh;
+}
+.update_price_container input, .update_price_container select, .create_price_container input, .create_price_container  select{
+    height: 5vh;
+    border-radius: 10px;
+    border: 3px solid blue;
+        
+    color: blue;
+}
+
+

@@ -95,7 +95,7 @@
 
     }
 .qualification img:hover {
-        transform: scale(2);
+        transform: scale(1.8);
         background-color: rgb(10, 235, 235, 0.2);
         backdrop-filter: blur(40px);
 

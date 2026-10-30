@@ -5,12 +5,13 @@
 
 {% block main_content %}
 
-<h2>Оставить отзыв</h2>
-<form action="{% url 'review_create' %}" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Отправить отзыв</button>
-</form>
-
+<div class="review_form_container">
+    <h2>Оставить отзыв</h2>
+    <form action="{% url 'review_create' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Отправить отзыв</button>
+    </form>
+</div>
 
 {% endblock main_content %}

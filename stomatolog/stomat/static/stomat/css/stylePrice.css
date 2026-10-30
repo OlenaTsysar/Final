@@ -6,7 +6,6 @@
   list-style: none;
 }
 
-
 .price_list {
     border: 5px solid #180cc4;
     border-radius: 12px;
@@ -38,4 +37,21 @@
     padding: 10px;
 
     font-size: 20px;
+}
+
+.price_container button, .category_item button {
+    display: flex;
+    justify-content: center;
+    
+    margin-left: 15px;
+    padding: 5px;
+
+    width: 15vw;
+    align-items: center;
+
+    background-color: rgb(10, 235, 235, 0.1);
+
+    border: 2px solid blue;
+    border-radius: 12px;
+    
 }

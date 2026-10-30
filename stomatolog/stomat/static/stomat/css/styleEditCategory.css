@@ -1,0 +1,66 @@
+.delete_category_container, .create_category_container, .update_category_container {
+    width: 60%;
+    height: 60vh;
+    
+    margin: 5px auto;
+    padding: 5px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    border: 5px solid blue;
+    border-radius: 12px;
+    background: rgb(10, 235, 235, 0.5);
+    color: blue;
+    font-size: 16px;
+
+}
+
+.delete_category_form, .create_category_container form, .update_category_container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 70%;
+    height: 60%;
+}
+.delete_category_container button, .create_category_container button, .update_category_container button {
+    /* margin: 0 auto; */
+    width: 60%;
+
+    margin: 15px;
+    padding: 5px;
+    color: blue;
+
+    border: 2px solid blue;
+    border-radius: 8px;
+    background: rgb(10, 235, 235, 0.8);
+
+}
+
+.delete_category_form p, .create_category_container p, .update_category_container p {
+    margin: 15px;
+    color: blue;
+    font-size: 1.1em;
+    height: 5vh;
+}
+.update_category_container input, .create_category_container input {
+    height: 5vh;
+    border-radius: 10px;
+    border: 3px solid blue;
+        
+    color: blue;
+}
+
+/* .update_category_form textarea {
+    height: 15vh;
+    border-radius: 10px;
+    border: 3px solid blue;
+        
+    color: blue;
+
+} */
