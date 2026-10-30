@@ -42,10 +42,10 @@ def is_administrator (user):
             return True
     raise PermissionDenied
 
-def my_view(request):
-    return render(request, 'stomat/includes/footer.html', {
-        'EMAIL_HOST_USER': settings.EMAIL_HOST_USER
-    })
+# def my_view(request):
+#     return render(request, 'stomat/include/footer.html', {
+#         'EMAIL_HOST_USER': settings.EMAIL_HOST_USER
+#     })
 
 def Home(request):
     category = Category.objects.all()
@@ -332,7 +332,8 @@ class FAQListView(ListView):
     paginate_by = 2
 
 def QuestionAsk (request):
-
+    success = False
+    
     if request.method == "POST":
         form = QuestionForm(request.POST)
 
@@ -349,7 +350,7 @@ def QuestionAsk (request):
                     f'Вопрос:\n{question}'
                     ),
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=['finalproekt102@gmail.com'],
+                to=[settings.EMAIL_HOST_USER],
                 reply_to=[email],
             )
                 
