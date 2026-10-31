@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, Doctors, Doctor_page, Servise, Contacts, Price_page, OurJobsListView, Order, Create_doctor, DoctorsUpdateView, DoctorDeleteView, DoctorsView, OrderView, RegisterView, LoginView, LogoutView, free_times_ajax, UserOrderView, FAQListView, ReviewListView, ReviewCreateView, QuestionAsk, PriceCreateView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, PriceUpdateView, PriceDeleteView
+from .views import Home, Doctors, Doctor_page, Servise, Contacts, Price_page, OurJobsListView, Order, Create_doctor, DoctorsUpdateView, DoctorDeleteView, DoctorsView, OrderView, RegisterView, LoginView, LogoutView, free_times_ajax, UserOrderView, FAQListView, ReviewListView, ReviewCreateView, QuestionAsk, PriceCreateView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, PriceUpdateView, PriceDeleteView, Adm_price_edit
 
 
 urlpatterns = [
@@ -15,6 +15,8 @@ urlpatterns = [
     path('price/create/', PriceCreateView.as_view(), name="price_create_page"),
     path('price/update/<int:id>', PriceUpdateView.as_view(), name="price_update_page"),
     path('price/delete/<int:id>', PriceDeleteView.as_view(), name="price_delete_page"),
+    path('price/edit',
+    Adm_price_edit.as_view(), name="adm_price_edit_page"),
     path('category/create/', CategoryCreateView.as_view(), name="category_create_page"),
     path('category/update/<int:id>', CategoryUpdateView.as_view(), name="category_update_page"),
     path('category/delete/<int:id>', CategoryDeleteView.as_view(), name="category_delete_page"),

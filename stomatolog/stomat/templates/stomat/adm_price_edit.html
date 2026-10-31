@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static%}
+
+{% include "includes/header.html" %}
+
+{% block main_content %}
+<div class="table_container">
+
+    {% for categ in categories %}
+        <h3>{{categ.name}}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Цена</th>
+                    <th>Изменить</th>
+                    <th>Удалить</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for price in categ.price.all %}
+                    <tr>
+                        <td>{{ price.name }}</td>
+                        <td>{{ price.price }}</td>
+                        <td><a href="{% url 'price_update_page' id=price.pk %}">Изменить услугу</a></td>
+                        <td><a href="{% url 'price_delete_page' id=price.pk %}">Удалить услугу</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% endfor %}
+    <a href="{% url 'price_page' %}">Назад</a>
+</div>    
+{% endblock main_content %}
+

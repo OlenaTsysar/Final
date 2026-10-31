@@ -333,7 +333,7 @@ class FAQListView(ListView):
 
 def QuestionAsk (request):
     success = False
-    
+
     if request.method == "POST":
         form = QuestionForm(request.POST)
 
@@ -475,6 +475,18 @@ class CategoryDeleteView(AdministratorUserRequiredMixin, DeleteView):
     def form_invalid(self, form):
         print("ОШИБКИ ФОРМЫ:", form.errors)
         return super().form_invalid(form)
+
+class Adm_price_edit(ListView):
+    model = Price
+    template_name = 'stomat/adm_price_edit.html'
+    context_object_name = "categories"
+
+    def get_queryset(self):
+
+        queryset = Category.objects.prefetch_related("price")
+
+        if self.request.user.is_superuser:
+            return queryset
 
 
 
