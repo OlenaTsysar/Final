@@ -5,7 +5,7 @@
 
 {% block main_content %}
 <div class="update_category_container">
-    <h2>Изменить категорию</h2>
+    <h3>Изменить категорию</h2>
     <form class="update_category_form" action="{% url 'category_update_page' id=object.pk %}" method="post">
         {% csrf_token %}
         {{form.as_p}}

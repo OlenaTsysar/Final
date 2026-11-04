@@ -20,9 +20,19 @@
     border-radius: 12px;
 
 }
-.FAQ_container button, .review_container button {
+.FAQ_container h2, .review_container h2 {
     display: flex;
-    justify-content: center;
+    
+    justify-content: space-around;
+
+    width: 15vw;
+    height: 5vh;
+
+}
+
+.container_button {
+    display: block;
+    /* justify-content: center; */
     
     position: absolute;
     right: 5px;

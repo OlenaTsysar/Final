@@ -38,14 +38,13 @@ class doctors(models.Model):
         super().save(*args, **kwargs)
 
 class DoctorsQualification(models.Model):
-    name = models.ForeignKey(doctors, on_delete=models.CASCADE, related_name="doctorsQualification", null=True, blank=True)
+    name = models.ForeignKey(doctors, on_delete=models.PROTECT, related_name="doctorsQualification", null=True, blank=True)
     image = models.ImageField(upload_to='stomat/image/', null=True, blank=True)
 
 class service(models.Model):
     name = models.CharField(max_length=250)
-    # price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE , related_name="service")
+    category = models.ForeignKey(Category, on_delete=models.PROTECT , related_name="service")
 
     class Meta: 
         ordering = ['name']
@@ -55,10 +54,8 @@ class service(models.Model):
     def __str__(self):
         return self.name
 
-
 class ourJobs(models.Model):
     image = models.ImageField(null=True, blank=True)
-
     description = models.TextField()
 
 class Price(models.Model):

@@ -13,8 +13,8 @@
         </form>
      
     {% else %}
-        <button type="submit"><a href="{% url 'login_page'%}">Войти</a></button>
-        <button type="submit"><a href="{% url 'register_page'%}">Регистрация</a></button>
+        <a class="user_auth_button" href="{% url 'login_page'%}">Войти</a>
+        <a class="user_auth_button" href="{% url 'register_page'%}">Регистрация</a>
     {% endif %}
 </div>
     
@@ -65,12 +65,12 @@
 
 <div class="review_container">
     <h2><a href="{% url 'review_page' %}">Отзывы</a></h2>
-    <button type="submit"><a href="{% url 'review_create' %}">Оставить отзыв</a></button>
+    <a class="container_button" href="{% url 'review_create' %}">Оставить отзыв</a>
 </div>
 
 <div class="FAQ_container">
     <h2><a href="{% url 'FAQ_page' %}">FAQ</a></h2>
-    <button type="submit"><a href="{% url 'questionAsk_page' %}">Задать вопрос</a></button>
+    <a class="container_button" href="{% url 'questionAsk_page' %}">Задать вопрос</a>
 </div>
 
 <div class="ord_container">

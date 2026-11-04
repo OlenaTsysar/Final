@@ -7,13 +7,28 @@
     padding: 5px;
 
     color: blue;
-    font-size: 20px;
+    font-size: 1.1rem;
     border: 5px solid blue;
     border-radius: 12px;
     margin: 5px 0 5px 0 ;
     background-color: rgb(10, 235, 235, 0.2);
 
 }
+
+.user_auth button, .user_auth_button {
+    display: block;
+
+    width: 30%;
+
+    margin: 15px auto;
+    padding: 5px;
+    color: blue;
+
+    border: 2px solid blue;
+    border-radius: 8px;
+    background: rgb(10, 235, 235, 0.8);
+}
+
 .reklama_container p, .descript_container p {
 
         text-align: justify;
@@ -42,18 +57,11 @@
     justify-content: center
 }
 .uslugi_container p {
-    font-size: 26px;
+    font-size: 1.4rem;
     font-weight: 600;
 }
 
-.user_auth button {
-    width: 30%;
-
-    margin: 15px;
-    padding: 5px;
-    color: blue;
-
-    border: 2px solid blue;
-    border-radius: 8px;
-    background: rgb(10, 235, 235, 0.8);
+.container_button {
+    text-align: center;
 }
+

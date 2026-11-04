@@ -27,14 +27,14 @@
 .job_p {
     padding: 10px;
     color: #180cc4;
-    font-size: 20px;
+    font-size: 1.1rem;
 
 }
 
 .pagination {
     margin: 5px;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.1rem;
     text-decoration: none;
 
 }

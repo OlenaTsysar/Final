@@ -6,10 +6,23 @@
 
 {% block main_content %}
 <div class="table_container">
-
     {% for categ in categories %}
-        <h3>{{categ.name}}</h3>
         <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Категория</th>
+                    <th>Изменить</th>
+                    <th>Удалить</th>
+                     
+                </tr>
+            </thead>
+            <tbody>
+                <td colspan="2"><h3>{{categ.name}}</h3> </td>
+                <td><a href="{% url 'category_update_page' id=categ.pk %}">Изменить категорию</a></td>
+                <td><a href="{% url 'category_delete_page' id=categ.pk %}">Удалить категорию</a></td>
+                </td>
+            </tbody>
+
             <thead>
                 <tr>
                     <th>Услуга</th>
@@ -32,6 +45,8 @@
         </table>
 
     {% endfor %}
+    <a href="{% url 'category_create_page' %}">Создать категорию</a>
+    <a href="{% url 'price_create_page' %}">Создать услугу</a>
     <a href="{% url 'price_page' %}">Назад</a>
 </div>    
 {% endblock main_content %}

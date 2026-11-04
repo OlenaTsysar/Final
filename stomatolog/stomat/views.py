@@ -35,17 +35,12 @@ from django.core.exceptions import PermissionDenied
 def is_editor(user):
     if user.is_authenticated and (user.groups.filter(name="Editor").exists() or user.is_superuser):
         return True
-    # raise PermissionDenied
+
 
 def is_administrator (user):
     if user.is_authenticated and (user.groups.filter(name="Administrator").exists() or user.is_superuser):
             return True
-    raise PermissionDenied
 
-# def my_view(request):
-#     return render(request, 'stomat/include/footer.html', {
-#         'EMAIL_HOST_USER': settings.EMAIL_HOST_USER
-#     })
 
 def Home(request):
     category = Category.objects.all()
@@ -114,7 +109,7 @@ def Doctor_page(request, id):
     return render(request, 'stomat/doctor.html', context)
 
 def Servise(request):
-    category_list = Category.objects.all()
+    category_list = Category.objects.all().order_by('name')
     servise_list = service.objects.all()
     context = {
         "category": category_list,
@@ -227,20 +222,18 @@ class UserOrderView(ListView):
 
 
 def Price_page(request):
-    category_list = Category.objects.all()
-    price_list = Price.objects.all()
+    category_list = Category.objects.all().order_by('name')
+    price_list = Price.objects.all().order_by('name')
     context = {
         "category": category_list,
         "price": price_list
     }
-    context["is_administrator"] = (
-        request.user.is_authenticated
-        and request.user.groups.filter(name="Administrator").exists() or request.user.is_superuser
-        )
+
+    user = request.user
+    context["is_administrator"] = is_administrator(user)
+    
     return render(request, 'stomat/price.html', context)
 
-# def OurJobs(request):
-#     return HttpResponse('our_jobs')
 
 def Contacts(request):
     return render(request, 'stomat/contacts.html')
@@ -419,16 +412,9 @@ class PriceDeleteView(AdministratorUserRequiredMixin, DeleteView):
     model = Price
     fields = ['name', 'price', 'category']
     template_name = 'stomat/price_delete_form.html'
-    success_url = reverse_lazy('price_delete_page')
+    success_url = reverse_lazy('price_page')
     pk_url_kwarg = 'id'
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        print("ОШИБКИ ФОРМЫ:", form.errors)
-        return super().form_invalid(form)
 
 class CategoryCreateView(AdministratorUserRequiredMixin, CreateView):
     model = Category
@@ -465,16 +451,9 @@ class CategoryDeleteView(AdministratorUserRequiredMixin, DeleteView):
     model = Category
     fields = ['name']
     template_name = 'stomat/category_delete_form.html'
-    success_url = reverse_lazy('category_delete_page')
+    success_url = reverse_lazy('price_page')
     pk_url_kwarg = 'id'
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        print("ОШИБКИ ФОРМЫ:", form.errors)
-        return super().form_invalid(form)
 
 class Adm_price_edit(ListView):
     model = Price

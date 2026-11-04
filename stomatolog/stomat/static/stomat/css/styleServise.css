@@ -6,6 +6,10 @@
   list-style: none;
 }
 
+html {
+    font-size: 18px;
+}
+
 
 .servise_container {
     display: flex;
@@ -26,7 +30,7 @@
     
     width: 80%;
 
-    color: #180cc4;
+    color: blue;
     
 }
 .categ_item {
@@ -35,10 +39,10 @@
     flex-direction: column;
     width: 80%;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 1.4rem;
     padding: 15px;
     list-style: none;
-    border: 2px solid #180cc4;
+    border: 2px solid blue;
     border-radius: 20px;
     background-color: #0aebeb;
     
@@ -58,8 +62,8 @@
 
     padding: 10px;
 
-    font-size: 20px;
-    border: 2px solid #180cc4;
+    font-size: 1.1rem;
+    border: 2px solid blue;
     border-radius: 20px;
     box-shadow: 15px 15px 15px #03fdfd;
 

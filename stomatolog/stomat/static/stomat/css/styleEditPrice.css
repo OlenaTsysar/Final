@@ -16,7 +16,7 @@
     border-radius: 12px;
     background: rgb(10, 235, 235, 0.5);
     color: blue;
-    font-size: 16px;
+    font-size: 1.1rem;
 
 }
 
@@ -28,8 +28,10 @@
     width: 70%;
     height: 60%;
 }
-.delete_price_container button, .create_price_container button, .update_price_container button {
+.delete_price_container button, .delete_price_container_button, .create_price_container button, .update_price_container button {
     /* margin: 0 auto; */
+    display: block;
+    text-align: center;
     width: 60%;
 
     margin: 15px;
@@ -45,7 +47,7 @@
 .delete_price_form p, .create_price_container p, .update_price_container p {
     margin: 15px;
     color: blue;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     height: 5vh;
 }
 .update_price_container input, .update_price_container select, .create_price_container input, .create_price_container  select{

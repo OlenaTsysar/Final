@@ -1,6 +1,6 @@
 .delete_doctor_container, .login_form_container, .register_form_container, .review_form_container {
     width: 60%;
-    height: 60vh;
+    height: 70vh;
     
     margin: 5px auto;
     padding: 5px;
@@ -16,7 +16,7 @@
     border-radius: 12px;
     background: rgb(10, 235, 235, 0.5);
     color: blue;
-    font-size: 16px;
+    font-size: 1em;
 
 }
 
