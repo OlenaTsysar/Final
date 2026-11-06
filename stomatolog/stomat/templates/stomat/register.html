@@ -5,7 +5,23 @@
 <div class="register_form_container">
     <form action="" method="POST">
         {% csrf_token %}
-        {{form}}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="form_group">
+                {{ field.label_tag }}
+                {{ field }}
+
+                {% if field.errors %}
+                    <div class="error">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+
+                {% if field.help_text %}
+                    <small>{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
         <button type="submit">Регистрация</button>
     </form>
 </div>

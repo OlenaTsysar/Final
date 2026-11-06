@@ -258,6 +258,8 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect("login")
+        else:
+            print("Form Errors:", form.errors)
     else:
         form = UserCreationForm()
     return render(request, "stomat/register.html", {"form": form})

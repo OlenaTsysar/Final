@@ -124,6 +124,28 @@ background-image: linear-gradient(to right, #0aebeb, white);
  
 }
 
+@media (max-width: 600px) {
+  .ikonka img, .imgIkonka {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+  }
+  .textIkonka {
+    font-size: 0.5rem;
+  }
+
+  @keyframes center {
+    from {
+        right: 0;
+    }
+    to {
+        right: 20%;
+    }
+
+}
+
+}
+
 @media (max-width: 500px) {
   .container {
     width: 100%;
@@ -132,11 +154,28 @@ background-image: linear-gradient(to right, #0aebeb, white);
     box-sizing: border-box;
   }
 
-  .ikonka img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
+  .telefon {
+    display: flex;
+    flex-direction: column;
   }
 
+  .ikonka img, .imgIkonka {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+html {
+  font-size: 14px;
+}
+
+@keyframes center {
+    from {
+        right: 0;
+    }
+    to {
+        right: 5%;
+    }
+
+}
 
 }

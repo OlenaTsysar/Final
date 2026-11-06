@@ -14,7 +14,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 30px;
+  gap: 10px;
+  padding: 10px;
 
   color: blue;
   font-size: 1rem;
@@ -27,10 +28,15 @@
 background-image: linear-gradient(to right, #0aebeb, white);
 }
 
+.textIkonka {
+    font-size: 0.9rem;
+}
+
 .map_list {
     position: relative;
     display: flex;
     flex-direction: column-reverse;
+    font-size: 0.9rem;
 }
 .navigation {
     position: relative;

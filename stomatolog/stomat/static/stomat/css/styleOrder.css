@@ -37,7 +37,9 @@
         text-align: center;
         justify-content: center;
         align-items: center;
-        width: 15vw;
+        width: auto;
+        min-width: 50px;
+        max-width: 85px;
         height: 5vh;
         padding: 5px;
 
