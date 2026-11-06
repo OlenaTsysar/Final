@@ -13,16 +13,12 @@
 
     box-shadow: 15px 15px 15px #03fdfd;
 
-
-    
-
 }
 
 .order_container p {
         color: blue;
-        font-size: 20px;
+        font-size: 1.1rem;
         height: 5vh;
-        font-size: 1.1em;
 
         }
 
@@ -48,6 +44,6 @@
         border-radius: 10px;
         border: 3px solid blue;
         color: blue;
-        font-size: 15px;
+        font-size: 0.8rem;
         background: rgb(10, 235, 235, 0.8);
     }

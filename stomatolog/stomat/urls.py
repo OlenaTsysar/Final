@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, Doctors, Doctor_page, Servise, Contacts, Price_page, OurJobsListView, Order, Create_doctor, DoctorsUpdateView, DoctorDeleteView, DoctorsView, OrderView, RegisterView, LoginView, LogoutView, free_times_ajax, UserOrderView, FAQListView, ReviewListView, ReviewCreateView, QuestionAsk, PriceCreateView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, PriceUpdateView, PriceDeleteView, Adm_price_edit
+from .views import Home, Doctor_page, Servise, Contacts, Price_page, OurJobsListView, Order, Create_doctor, DoctorsUpdateView, DoctorDeleteView, DoctorsView, OrderView, RegisterView, LoginView, LogoutView, free_times_ajax, UserOrderView, FAQListView, ReviewListView, ReviewCreateView, QuestionAsk, PriceCreateView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, PriceUpdateView, PriceDeleteView, Adm_price_edit
 
 
 urlpatterns = [

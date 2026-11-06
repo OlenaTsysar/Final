@@ -16,7 +16,7 @@
     border-radius: 12px;
     background: rgb(10, 235, 235, 0.5);
     color: blue;
-    font-size: 1em;
+    font-size: 1rem;
 
 }
 
@@ -26,10 +26,12 @@
     align-items: center;
 
     width: 60%;
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
+
+
 .delete_doctor_form button, .login_form button, .register_form_container button  {
-    /* margin: 0 auto; */
+
     width: 60%;
 
     margin: 15px;
@@ -45,7 +47,7 @@
 .login_form p {
     margin: 15px;
     color: blue;
-    font-size: 20px;
+    font-size: 1.1rem;
     height: 5vh;
 }
 .login_form input, .register_form_container input {

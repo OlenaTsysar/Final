@@ -1,6 +1,5 @@
 .table_container { 
     overflow-x: auto; 
-    /* max-width: 800px;  */
     width: 90%;
     margin: 25px auto; 
     
@@ -14,7 +13,6 @@ table {
     border-collapse: collapse; 
     background: white; 
     box-shadow: 0 3px 10px #00000010;
-
 
 } 
     

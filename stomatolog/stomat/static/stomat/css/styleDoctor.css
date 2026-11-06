@@ -11,7 +11,7 @@
     margin: 2% auto;
     width: 80vw;
     height: 100%;
-    border: 5px solid #180cc4;
+    border: 5px solid blue;
     border-radius: 20px;
     background-color: rgb(10, 235, 235, 0.2);
 
@@ -23,7 +23,7 @@
 
 
     & h1 {
-        color: #180cc4;
+        color: blue;
         top: 2px;
         margin: 2px;
         padding: 2px;
@@ -37,16 +37,16 @@
     align-items: center;
 
     & p {
-        padding: 0.3em;
-        color:#180cc4;
-        font-size: 1.1em;
+        padding: 0.2rem;
+        color:blue;
+        font-size: 1.1rem;
     }
-     & h2 {
-        color: #180cc4;
-        padding: 0.2em;
+    & h2 {
+        color: blue;
+        padding: 0.2rem;
      }
 
-     & a {
+    & a {
         align-content: flex-end;
      }
 
@@ -63,7 +63,7 @@
     height: 100%;
     object-fit: contain;
     border-radius: 5px;
-    border: 1px solid #180cc4;
+    border: 1px solid blue;
     transition: transform 0.8s ease;
 
     &:hover {
@@ -91,7 +91,7 @@
         height: 20vh;
         object-fit: contain;
         border-radius: 5px;
-        border: 1px solid #180cc4;
+        border: 1px solid blue;
         transition: transform 0.8s ease;
 
 

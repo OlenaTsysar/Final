@@ -1,7 +1,5 @@
 .reklama_container, .descript_container, .uslugi_container, .user_auth {
-    /* display: flex;
-    justify-content: column;
-    flex-wrap: wrap; */
+
     text-align: center;
     width: 100%;
     padding: 5px;
@@ -29,9 +27,7 @@
     background: rgb(10, 235, 235, 0.8);
 }
 
-.reklama_container p, .descript_container p {
-
-        text-align: justify;
+.reklama_container p, .descript_container p {     text-align: justify;
         padding: 5px;
 
     }

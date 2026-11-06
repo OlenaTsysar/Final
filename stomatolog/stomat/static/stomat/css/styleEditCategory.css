@@ -24,14 +24,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 
-    width: 70%;
+    width: 80%;
     height: 60%;
 }
 
 
 .delete_category_container button, .delete_category_container_button, .create_category_container button, .update_category_container button {
-    /* margin: 0 auto; */
+
     display: block;
     text-align: center;
     width: 60%;
@@ -39,6 +40,7 @@
     margin: 15px;
     padding: 5px;
     color: blue;
+    font-size: 0.8rem;
 
     border: 2px solid blue;
     border-radius: 8px;

@@ -16,10 +16,10 @@
   justify-content: space-around;
   gap: 30px;
 
-  color: #180cc4;
-  font-size: 20px;
+  color: blue;
+  font-size: 1rem;
   border-radius: 10px;
-  border: 4px solid rgb(8, 55, 207);
+  border: 4px solid blue;
   background-image: linear-gradient(to right, white, #0aebeb);
 }
 

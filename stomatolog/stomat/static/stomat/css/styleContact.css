@@ -18,7 +18,7 @@
     box-shadow: 15px 15px 15px #03fdfd;
     border-radius: 30px;
     color: blue;
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: 600;
 
 }
@@ -30,12 +30,12 @@ img {
 .ikonkaNavC {
 
     display: flex;
-    /* flex-direction: row; */
+
     justify-content: flex-end;
-    /* width: 100%; */
+
     padding: 0;
     margin: 0;
-    font-size: 30px;
+    font-size: 1.7rem;
     
 }
 
@@ -48,8 +48,7 @@ img {
 }
 .imgIkonka,
 .spanIkonka {
-    /* display: inline-block; */
-    /* transform: translateX(-60%); */
+
     color: blue;
     position: relative;
     animation: center 2s ease-in-out forwards;
@@ -90,14 +89,20 @@ img {
 @keyframes center {
     from {
         right: 0;
-        /* 
-         */
     }
     to {
         right: 30%;
-        /* transform: translateX(-150px); */
     }
+    
+    
+    /* from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+       
+} */
+
 }
-
-
 

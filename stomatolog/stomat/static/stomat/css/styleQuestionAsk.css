@@ -16,7 +16,7 @@
     border-radius: 12px;
     background: rgb(10, 235, 235, 0.5);
     color: blue;
-    font-size: 16px;
+    font-size: 1.1rem;
 
 }
 
@@ -31,10 +31,9 @@
     height: 60%;
 }
 .questionAsk_container button {
-    /* margin: 0 auto; */
+
     width: 60%;
 
-    /* margin: 15px; */
     padding: 5px;
     color: blue;
 
@@ -47,8 +46,8 @@
 .questionAsk_form p {
     margin: 15px;
     color: blue;
-    font-size: 1.1em;
-    /* height: auto; */
+    font-size: 1rem;
+
 }
 .questionAsk_form input {
     height: 5vh;

@@ -20,7 +20,7 @@
                 <td colspan="2"><h3>{{categ.name}}</h3> </td>
                 <td><a href="{% url 'category_update_page' id=categ.pk %}">Изменить категорию</a></td>
                 <td><a href="{% url 'category_delete_page' id=categ.pk %}">Удалить категорию</a></td>
-                </td>
+
             </tbody>
 
             <thead>
@@ -39,6 +39,7 @@
                         <td>{{ price.price }}</td>
                         <td><a href="{% url 'price_update_page' id=price.pk %}">Изменить услугу</a></td>
                         <td><a href="{% url 'price_delete_page' id=price.pk %}">Удалить услугу</a></td>
+ 
                     </tr>
                 {% endfor %}
             </tbody>

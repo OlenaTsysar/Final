@@ -46,12 +46,12 @@ def Home(request):
     category = Category.objects.all()
     return render(request, 'stomat/home.html', {'category': category})
 
-def Doctors(request):
-    category_list = DoctorCategory.objects.all()
-    doctor_list = doctors.objects.all()
-    context = {"category": category_list,
-        "doctors": doctor_list}
-    return render(request, "stomat/doctors.html", context)
+# def Doctors(request):
+#     category_list = DoctorCategory.objects.all()
+#     doctor_list = doctors.objects.all()
+#     context = {"category": category_list,
+#         "doctors": doctor_list}
+#     return render(request, "stomat/doctors.html", context)
 
 class DoctorsView(TemplateView):
     template_name = "stomat/doctors.html"
@@ -61,9 +61,6 @@ class DoctorsView(TemplateView):
 
         categories = DoctorCategory.objects.prefetch_related("doctors").all()
 
-        # category_list = DoctorCategory.objects.all()
-        # doctor_list = doctors.objects.all()
-
         for category in categories:
             paginator = Paginator(category.doctors.all(), 2)
             page_number = self.request.GET.get(f'page_{category.id}')
@@ -71,23 +68,11 @@ class DoctorsView(TemplateView):
 
         context["category"] = categories
 
-        # user = self.request.user
-        # context["is_editor"] = (
-        #     user.is_authenticated
-        #     and (user.groups.filter(name="Editor").exists() or user.is_superuser)
-        # )
-
         user = self.request.user
         context["is_editor"] = is_editor(user)
 
-        # context["category"] = category_list
-        # context["doctors"] = page_obj
-        # context["page_obj"] = page_obj
-
         return context
 
-    # def __str__(self):
-    #     return print(self.name)
 
 def Doctor_page(request, id):
     context = {}
@@ -97,11 +82,6 @@ def Doctor_page(request, id):
     except doctors.DoesNotExist:
         context["doc"] = None
 
-    # user = request.user
-    # context["is_editor"] = (
-    #     user.is_authenticated
-    #     and (user.groups.filter(name="Editor").exists() or user.is_superuser)
-    #     )
 
     user = request.user
     context["is_editor"] = is_editor(user)
@@ -120,7 +100,7 @@ def Servise(request):
 
 def get_free_times(doctor, selected_date):
     start_work = time(9, 0)
-    end_work = time(16, 0)
+    end_work = time(17, 0)
 
     work_start = datetime.combine(selected_date, start_work)
     work_end = datetime.combine(selected_date, end_work)
@@ -455,7 +435,7 @@ class CategoryDeleteView(AdministratorUserRequiredMixin, DeleteView):
     pk_url_kwarg = 'id'
 
 
-class Adm_price_edit(ListView):
+class Adm_price_edit(AdministratorUserRequiredMixin, ListView):
     model = Price
     template_name = 'stomat/adm_price_edit.html'
     context_object_name = "categories"
@@ -464,8 +444,7 @@ class Adm_price_edit(ListView):
 
         queryset = Category.objects.prefetch_related("price")
 
-        if self.request.user.is_superuser:
-            return queryset
+        return queryset
 
 
 
