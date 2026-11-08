@@ -125,6 +125,12 @@ background-image: linear-gradient(to right, #0aebeb, white);
 }
 
 @media (max-width: 600px) {
+    .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
   .ikonka img, .imgIkonka {
     width: 35px;
     height: 35px;
@@ -148,7 +154,7 @@ background-image: linear-gradient(to right, #0aebeb, white);
 
 @media (max-width: 500px) {
   .container {
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
@@ -164,6 +170,7 @@ background-image: linear-gradient(to right, #0aebeb, white);
     height: 25px;
     object-fit: contain;
   }
+  
 html {
   font-size: 14px;
 }

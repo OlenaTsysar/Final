@@ -57,7 +57,7 @@
     color: blue;
 }
 
-.questionAsk_form textarea {
+.questionAsk_form textarea, .review_form_container textarea {
     padding: 5px;
     height: auto;
     border-radius: 10px;

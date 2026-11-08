@@ -379,7 +379,7 @@ class PriceUpdateView(AdministratorUserRequiredMixin, UpdateView):
     model = Price
     fields = ['name', 'price', 'category']
     template_name = 'stomat/price_update_form.html'
-    success_url = reverse_lazy('price_update_page')
+    success_url = reverse_lazy('price_page')
     pk_url_kwarg = 'id'
 
     def form_valid(self, form):
